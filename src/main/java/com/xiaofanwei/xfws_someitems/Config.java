@@ -1,4 +1,4 @@
-package com.example.examplemod;
+package com.xiaofanwei.xfws_someitems;
 
 import java.util.List;
 import java.util.Set;

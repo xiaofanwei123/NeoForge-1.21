@@ -15,7 +15,7 @@ issueTrackerURL="https://github.com/xiaofanwei123/NeoForge-1.21" #optional
 [[mods]] #mandatory
 
 # The modid of the mod
-modId="xfws_more_ac" #mandatory
+modId="xfws_someitems" #mandatory
 
 # The version number of the mod
 version="0.0.1" #mandatory

@@ -1,16 +1,15 @@
-package com.example.examplemod;
+package com.xiaofanwei.xfws_someitems;
 
-import com.example.examplemod.registries.ACBlockRegistries;
-import com.example.examplemod.registries.ACCreativeTabRegistry;
-import com.example.examplemod.registries.ACItemRegistries;
+import com.xiaofanwei.xfws_someitems.registries.BlockRegistries;
+import com.xiaofanwei.xfws_someitems.registries.CreativeTabRegistry;
+import com.xiaofanwei.xfws_someitems.registries.ItemRegistries;
+import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -23,14 +22,13 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-import net.neoforged.neoforge.registries.DeferredRegister;
 
 // 这里的值应该与 META-INF/neoforge.mods.toml 文件中的条目匹配
 @Mod(MoreAC.MODID)
 public class MoreAC
 {
     //mod id
-    public static final String MODID = "xfws_more_ac";
+    public static final String MODID = "xfws_someitems";
     private static final Logger LOGGER = LogUtils.getLogger();
 
 
@@ -41,9 +39,9 @@ public class MoreAC
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
-        ACBlockRegistries.register(modEventBus);
-        ACItemRegistries.register(modEventBus);
-        ACCreativeTabRegistry.register(modEventBus);
+        BlockRegistries.register(modEventBus);
+        ItemRegistries.register(modEventBus);
+        CreativeTabRegistry.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (MoreAC) to respond directly to events.
@@ -55,6 +53,7 @@ public class MoreAC
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
@@ -69,6 +68,7 @@ public class MoreAC
 
         Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));
     }
+
 
     // Add the example block item to the building blocks tab
 //    private void addCreative(BuildCreativeModeTabContentsEvent event)
@@ -96,5 +96,9 @@ public class MoreAC
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         }
+    }
+
+    public static ResourceLocation Resource(String path) {
+        return ResourceLocation.fromNamespaceAndPath(MODID, path);
     }
 }

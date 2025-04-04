@@ -1,4 +1,4 @@
-package com.example.examplemod.registries;
+package com.xiaofanwei.xfws_someitems.registries;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -6,11 +6,11 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
-public class ACBlockRegistries {
-    private static final DeferredRegister.Blocks BLOCKS =DeferredRegister.createBlocks("xfws_more_ac");
+public class BlockRegistries {
+    private static final DeferredRegister.Blocks BLOCKS =DeferredRegister.createBlocks("xfws_someitems");
     public static final DeferredBlock<Block> EXAMPLE_BLOCK;
 
-    public ACBlockRegistries() {
+    public BlockRegistries() {
     }
 
     public static void register(IEventBus eventBus) {
