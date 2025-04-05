@@ -27,6 +27,8 @@ public class CreativeTabRegistry {
                     output.accept(ItemRegistries.EXAMPLE_ITEM.get());
                     output.accept(ItemRegistries.EXAMPLE_BLOCK.get());
                     output.accept(ItemRegistries.NATURE_GIFT.get());
+                    output.accept(ItemRegistries.MANA_FLOWER.get());
+                    output.accept(ItemRegistries.MAGNET_FLOWER.get());
                 }).build());
 
     }

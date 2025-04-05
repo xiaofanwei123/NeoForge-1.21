@@ -135,15 +135,16 @@ dependencies {
 
     implementation "curse.maven:playeranimator-658587:6024462"
 
-    implementation "curse.maven:lionfish-api-1001614:6168249"
+    implementation "curse.maven:terra-curio-1027625:6299244"
+    //implementation "curse.maven:lionfish-api-1001614:6168249"
 
-    implementation "curse.maven:lendercataclysm-551586:6370063"
+    //implementation "curse.maven:lendercataclysm-551586:6370063"
+
+    //implementation "curse.maven:placebo-283644:6337156"
+
+    //implementation "curse.maven:apothic-attributes-898963:6302334"
 
     implementation "curse.maven:selene-499980:6372808"
-
-    implementation "curse.maven:placebo-283644:6337156"
-
-    implementation "curse.maven:apothic-attributes-898963:6302334"
 
     implementation "curse.maven:mmmmmmmmmmmm-225738:6237115"
     //implementation "curse.maven:lendercataclysm-551586:6370063"

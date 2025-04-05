@@ -1,5 +1,7 @@
 {
-  "itemGroup.examplemod": "Example Mod Tab",
-  "block.examplemod.example_block": "Example Block",
-  "item.examplemod.xfws_someitems": "Example Item"
+  "item.xfws_someitems.example_item": "Example Item",
+  "item.xfws_someitems.example_block": "Example Block",
+  "item.xfws_someitems.nature_gift": "Nature Gift",
+  "item.xfws_someitems.mana_flower": "Mana Flower",
+  "item.xfws_someitems.magnet_flower": "Magnet Flower"
 }

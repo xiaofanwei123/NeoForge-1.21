@@ -11,6 +11,7 @@ import net.minecraft.world.item.Rarity;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import org.confluence.terra_curio.common.init.TCAttributes;
 
 import static net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.ADD_VALUE;
 import static net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL;
@@ -20,8 +21,10 @@ public class ItemRegistries {
 
     public static final DeferredItem<Item> EXAMPLE_ITEM;
     public static final DeferredItem<BlockItem> EXAMPLE_BLOCK;
-    //nature_gift
     public static final DeferredItem<CurioBaseItem> NATURE_GIFT;
+    public static final DeferredItem<CurioBaseItem> MANA_FLOWER;
+    //magnet_flower
+    public static final DeferredItem<CurioBaseItem> MAGNET_FLOWER;
 
 
     public ItemRegistries() {
@@ -39,10 +42,17 @@ public class ItemRegistries {
 
         NATURE_GIFT = ITEMS.register("nature_gift", () -> (
                 new CurioBaseItem(ItemPropertiesHelper.equipment(1))
-                        .withAttributes(Curios.RING_SLOT, new AttributeContainer[]{new AttributeContainer(AttributeRegistry.COOLDOWN_REDUCTION, 0.05, ADD_MULTIPLIED_TOTAL)})));}
+                        .withAttributes("accessory", new AttributeContainer[]{new AttributeContainer(AttributeRegistry.COOLDOWN_REDUCTION, 0.05, ADD_MULTIPLIED_TOTAL)})));
+        MANA_FLOWER = ITEMS.register("mana_flower", () -> (
+                new CurioBaseItem(ItemPropertiesHelper.equipment(1))
+                        .withAttributes("accessory", new AttributeContainer[]{new AttributeContainer(AttributeRegistry.COOLDOWN_REDUCTION, 0.08, ADD_MULTIPLIED_TOTAL)})));
+        MAGNET_FLOWER = ITEMS.register("magnet_flower", () -> (
+                new CurioBaseItem(ItemPropertiesHelper.equipment(1))
+                        .withAttributes("accessory", new AttributeContainer[]{new AttributeContainer(AttributeRegistry.COOLDOWN_REDUCTION, 0.1, ADD_MULTIPLIED_TOTAL),
+                                new AttributeContainer(TCAttributes.AGGRO, -300, ADD_VALUE)})));
 
 
-
+}
     
     
 //        BEZOAR = registerCurio("bezoar",builder -> builder

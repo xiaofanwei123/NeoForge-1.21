@@ -1,9 +1,17 @@
 package com.xiaofanwei.xfws_someitems;
 
+import com.xiaofanwei.xfws_someitems.event.ModEvent;
 import com.xiaofanwei.xfws_someitems.registries.BlockRegistries;
 import com.xiaofanwei.xfws_someitems.registries.CreativeTabRegistry;
 import com.xiaofanwei.xfws_someitems.registries.ItemRegistries;
+import com.xiaofanwei.xfws_someitems.util.CuriosUtils;
+import io.redspace.ironsspellbooks.api.magic.SpellSelectionManager;
+import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.Level;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -22,6 +30,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+
 
 // 这里的值应该与 META-INF/neoforge.mods.toml 文件中的条目匹配
 @Mod(MoreAC.MODID)
@@ -48,13 +57,14 @@ public class MoreAC
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
 
-        // Register the item to a creative tab
-//        modEventBus.addListener(this::addCreative);
-
-        // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 
+
+        ModEvent.register();
     }
+
+
+
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
