@@ -3,5 +3,8 @@
   "item.xfws_someitems.example_block": "Example Block",
   "item.xfws_someitems.nature_gift": "Nature Gift",
   "item.xfws_someitems.mana_flower": "Mana Flower",
-  "item.xfws_someitems.magnet_flower": "Magnet Flower"
+  "item.xfws_someitems.magnet_flower": "Magnet Flower",
+
+  "item.xfws_someitems.magnet_flower.tooltip": "When you need mana, automatically use the mana potion in your backpack",
+  "item.xfws_someitems.mana_flower.tooltip": "When you need mana, automatically use the mana potion in your backpack"
 }

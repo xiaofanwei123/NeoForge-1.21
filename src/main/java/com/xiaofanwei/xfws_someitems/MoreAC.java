@@ -1,5 +1,6 @@
 package com.xiaofanwei.xfws_someitems;
 
+import com.xiaofanwei.xfws_someitems.data.DataGenerator;
 import com.xiaofanwei.xfws_someitems.event.ModEvent;
 import com.xiaofanwei.xfws_someitems.registries.BlockRegistries;
 import com.xiaofanwei.xfws_someitems.registries.CreativeTabRegistry;
@@ -59,7 +60,7 @@ public class MoreAC
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 
-
+        modEventBus.addListener(DataGenerator::gatherData);
         ModEvent.register();
     }
 
