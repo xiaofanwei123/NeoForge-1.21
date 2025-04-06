@@ -53,9 +53,9 @@ description='Hello'
 # The coremods config file path is not configurable and is always loaded from META-INF/coremods.json
 
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
-[[dependencies.${mod_id}]] #optional
+[[dependencies.xfws_someitems]] #optional
     # the modid of the dependency
-    modId="neoforge" #mandatory
+    modId="xfws_someitems" #mandatory
     # The type of the dependency. Can be one of "required", "optional", "incompatible" or "discouraged" (case insensitive).
     # 'required' requires the mod to exist, 'optional' does not
     # 'incompatible' will prevent the game from loading when the mod exists, and 'discouraged' will show a warning
@@ -72,13 +72,57 @@ description='Hello'
     side="BOTH"
 
 # Here's another dependency
-[[dependencies.${mod_id}]]
+[[dependencies.xfws_someitems]]
     modId="minecraft"
     type="required"
     # This version range declares a minimum of the current minecraft version up to but not including the next major version
     versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
+
+
+#modId="irons_spellbooks"
+
+
+[[dependencies.xfws_someitems]]
+modId="geckolib"
+type="required"
+# This version range declares a minimum of the current minecraft version up to but not including the next major version
+versionRange="[4.7.3,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.xfws_someitems]]
+modId="playeranimator"
+type="required"
+# This version range declares a minimum of the current minecraft version up to but not including the next major version
+versionRange="[2.0.0-alpha1+1.21,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.xfws_someitems]]
+modId="playeranimator"
+type="required"
+# This version range declares a minimum of the current minecraft version up to but not including the next major version
+versionRange="[2.0.0-alpha1+1.21,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.xfws_someitems]]
+modId="curios"
+type="required"
+# This version range declares a minimum of the current minecraft version up to but not including the next major version
+versionRange="[9.0.5+1.21.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.xfws_someitems]]
+modId="terra_curio"
+type="required"
+# This version range declares a minimum of the current minecraft version up to but not including the next major version
+versionRange="1.0.8"
+ordering = "NONE"
+side = "BOTH"
 
 # Features are specific properties of the game environment, that you may want to declare you require. This example declares
 # that your mod requires GL version 3.2 or higher. Other features will be added. They are side aware so declaring this won't

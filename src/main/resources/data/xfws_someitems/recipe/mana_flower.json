@@ -1,0 +1,21 @@
+{
+  "type": "terra_curio:workshop",
+  "ingredients": [
+    {
+      "item": "xfws_someitems:nature_gift"
+    },
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "type": "terra_curio:amount_ingredient",
+      "ingredient": {
+        "item": "irons_spellbooks:arcane_essence"
+      },
+      "count": 10
+    }
+  ],
+  "result": {
+    "id": "xfws_someitems:mana_flower"
+  }
+}

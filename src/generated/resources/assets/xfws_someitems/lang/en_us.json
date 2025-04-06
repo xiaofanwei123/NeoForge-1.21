@@ -1,0 +1,14 @@
+{
+  "item.xfws_someitems.ancient_fossil": "Ancient Fossil",
+  "item.xfws_someitems.band_of_starpower": "Band of Starpower",
+  "item.xfws_someitems.magic_cuffs": "Magic Cuffs",
+  "item.xfws_someitems.magnet_flower": "Magnet Flower",
+  "item.xfws_someitems.mana_flower": "Mana Flower",
+  "item.xfws_someitems.mana_regeneration_band": "Mana Regeneration Band",
+  "item.xfws_someitems.nature_gift": "Nature Gift",
+  "jei.tooltip.item.xfws_someitems.band_of_starpower": "You can find it in the Magician's Cabin",
+  "tooltip.item.xfws_someitems.magic_cuffs": "Restore 10 times the mana value of the damage received after injury",
+  "tooltip.item.xfws_someitems.magnet_flower": "When you need mana, automatically use the mana potion in your backpack",
+  "tooltip.item.xfws_someitems.mana_flower": "When you need mana, automatically use the mana potion in your backpack",
+  "xfws_someitems.creativemodetab": "xiaofanwei's items"
+}

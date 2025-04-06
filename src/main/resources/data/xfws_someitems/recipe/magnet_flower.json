@@ -1,0 +1,14 @@
+{
+  "type": "terra_curio:workshop",
+  "ingredients": [
+    {
+      "item": "xfws_someitems:mana_flower"
+    },
+    {
+      "item": "terra_curio:putrid_scent"
+    }
+  ],
+  "result": {
+    "id": "xfws_someitems:magnet_flower"
+  }
+}

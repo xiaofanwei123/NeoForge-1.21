@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "xfws_someitems:item/band_of_starpower"
+  }
+}

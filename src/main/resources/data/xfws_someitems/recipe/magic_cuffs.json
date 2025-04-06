@@ -1,0 +1,14 @@
+{
+  "type": "terra_curio:workshop",
+  "ingredients": [
+    {
+      "item": "xfws_someitems:mana_regeneration_band"
+    },
+    {
+      "item": "terra_curio:shackle"
+    }
+  ],
+  "result": {
+    "id": "xfws_someitems:magic_cuffs"
+  }
+}

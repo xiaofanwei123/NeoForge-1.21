@@ -1,0 +1,14 @@
+{
+  "item.xfws_someitems.ancient_fossil": "远古化石",
+  "item.xfws_someitems.band_of_starpower": "星力手环",
+  "item.xfws_someitems.magic_cuffs": "魔法手铐",
+  "item.xfws_someitems.magnet_flower": "奥术花",
+  "item.xfws_someitems.mana_flower": "魔力花",
+  "item.xfws_someitems.mana_regeneration_band": "魔力再生手环",
+  "item.xfws_someitems.nature_gift": "大自然的礼物",
+  "jei.tooltip.item.xfws_someitems.band_of_starpower": "你可以在魔法师小屋找到",
+  "tooltip.item.xfws_someitems.magic_cuffs": "受伤后恢复受到伤害10倍的法力值",
+  "tooltip.item.xfws_someitems.magnet_flower": "当你需要法力时，自动使用你背包的法力药水",
+  "tooltip.item.xfws_someitems.mana_flower": "当你需要法力时，自动使用你背包的法力药水",
+  "xfws_someitems.creativemodetab": "xiaofanwei's items"
+}

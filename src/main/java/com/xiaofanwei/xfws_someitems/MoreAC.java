@@ -1,18 +1,10 @@
 package com.xiaofanwei.xfws_someitems;
 
-import com.xiaofanwei.xfws_someitems.data.DataGenerator;
-import com.xiaofanwei.xfws_someitems.event.ModEvent;
 import com.xiaofanwei.xfws_someitems.registries.BlockRegistries;
 import com.xiaofanwei.xfws_someitems.registries.CreativeTabRegistry;
 import com.xiaofanwei.xfws_someitems.registries.ItemRegistries;
-import com.xiaofanwei.xfws_someitems.util.CuriosUtils;
-import io.redspace.ironsspellbooks.api.magic.SpellSelectionManager;
-import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
+import com.xiaofanwei.xfws_someitems.registries.MobEffectRegistry;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.Level;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -37,13 +29,9 @@ import net.neoforged.neoforge.event.server.ServerStartingEvent;
 @Mod(MoreAC.MODID)
 public class MoreAC
 {
-    //mod id
     public static final String MODID = "xfws_someitems";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
-
-    // The constructor for the mod class is the first code that is run when your mod is loaded.
-    // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
     public MoreAC(IEventBus modEventBus, ModContainer modContainer)
     {
         // Register the commonSetup method for modloading
@@ -52,16 +40,11 @@ public class MoreAC
         BlockRegistries.register(modEventBus);
         ItemRegistries.register(modEventBus);
         CreativeTabRegistry.register(modEventBus);
-
-        // Register ourselves for server and other game events we are interested in.
-        // Note that this is necessary if and only if we want *this* class (MoreAC) to respond directly to events.
-        // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
+        MobEffectRegistry.register(modEventBus);
         NeoForge.EVENT_BUS.register(this);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 
-        modEventBus.addListener(DataGenerator::gatherData);
-        ModEvent.register();
     }
 
 
@@ -81,18 +64,10 @@ public class MoreAC
     }
 
 
-    // Add the example block item to the building blocks tab
-//    private void addCreative(BuildCreativeModeTabContentsEvent event)
-//    {
-//        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS)
-//            event.accept(EXAMPLE_BLOCK_ITEM);
-//    }
-
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event)
     {
-        // Do something when the server starts
         LOGGER.info("HELLO from server starting");
     }
 
@@ -103,7 +78,6 @@ public class MoreAC
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         }
