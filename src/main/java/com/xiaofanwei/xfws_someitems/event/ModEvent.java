@@ -10,6 +10,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.PotionItem;
 import net.neoforged.neoforge.common.NeoForge;
 
@@ -32,42 +33,65 @@ public class ModEvent {
             if (costmana > leftmana && leftmana != 0) {
                 for (ItemStack itemstack : event.getEntity().getInventory().items) {
                     if (itemstack.getItem() instanceof PotionItem) {
-                        if (itemstack.get(DataComponents.POTION_CONTENTS).is(PotionRegistry.INSTANT_MANA_ONE)) {
-                            itemstack.shrink(1);
-                            event.getEntity().addEffect(new MobEffectInstance(MobEffectRegistry.INSTANT_MANA, 1, 1));
-                            return;
-                        }
-                        if (itemstack.get(DataComponents.POTION_CONTENTS).is(PotionRegistry.INSTANT_MANA_TWO)){
-                            itemstack.shrink(1);
-                            event.getEntity().addEffect(new MobEffectInstance(MobEffectRegistry.INSTANT_MANA, 1, 2));
-                            return;
-                        }
-                        if (itemstack.get(DataComponents.POTION_CONTENTS).is(PotionRegistry.INSTANT_MANA_THREE)){
-                            itemstack.shrink(1);
-                            event.getEntity().addEffect(new MobEffectInstance(MobEffectRegistry.INSTANT_MANA, 1, 3));
-                            return;
-                        }
-                        if (itemstack.get(DataComponents.POTION_CONTENTS).is(PotionRegistry.INSTANT_MANA_FOUR)){
-                            itemstack.shrink(1);
-                            event.getEntity().addEffect(new MobEffectInstance(MobEffectRegistry.INSTANT_MANA, 1, 4));
-                            return;
-                        }
+                        if(JudgePotion(itemstack, event.getEntity(), maxmana)) return;
                     }
                 }
             }
         }
     }
+
+    private static boolean JudgePotion(ItemStack itemstack, Player player,double maxmana) {
+        if(itemstack.get(DataComponents.POTION_CONTENTS).is(PotionRegistry.INSTANT_MANA_FOUR)){
+            CostPotion(itemstack, player, 100,0.2,maxmana);
+            return true;
+        }
+        if(itemstack.get(DataComponents.POTION_CONTENTS).is(PotionRegistry.INSTANT_MANA_THREE)){
+            CostPotion(itemstack, player, 75,0.15,maxmana);
+            return true;
+        }
+        if(itemstack.get(DataComponents.POTION_CONTENTS).is(PotionRegistry.INSTANT_MANA_TWO)){
+            CostPotion(itemstack, player, 50,0.1,maxmana);
+            return true;
+        }
+        if(itemstack.get(DataComponents.POTION_CONTENTS).is(PotionRegistry.INSTANT_MANA_ONE)){
+            CostPotion(itemstack, player, 25,0.05,maxmana);
+            return true;
+        }
+        return false;
+    }
+
+    private static void CostPotion(ItemStack itemstack, Player player, int parameter1,double parameter2,double maxmana) {
+        itemstack.shrink(1);
+        player.addItem(new ItemStack(Items.GLASS_BOTTLE));
+        CuriosUtils.getMagicData(player).addMana((float) (parameter1+maxmana*parameter2));
+    }
 }
 
-//                if(event.getEntity().getInventory().hasAnyMatching(stack -> stack.is(Items.POTION) && stack.get(DataComponents.POTION_CONTENTS).is(PotionRegistry.INSTANT_MANA_ONE))){
-//
-//                }
-
-//                for (int i = 0; i < (event.getEntity()).getInventory().getContainerSize(); i++) {
-
-//event.getEntity().getInventory().setItem(i, new ItemStack(Items.GLASS_BOTTLE));
-//                for (ItemStack stack : event.getEntity().getInventory().items){
-//                    if(stack.getItem() instanceof PotionItem potionItem){
-//
-//                    }
-//                }
+//                        if (itemstack.get(DataComponents.POTION_CONTENTS).is(PotionRegistry.INSTANT_MANA_FOUR)){
+//                            itemstack.shrink(1);
+//                            event.getEntity().addItem(new ItemStack(Items.GLASS_BOTTLE));
+//                            CuriosUtils.getMagicData(event.getEntity()).addMana((float) (100+maxmana*0.2));
+//                            //event.getEntity().addEffect(new MobEffectInstance(MobEffectRegistry.INSTANT_MANA, 1, 4));
+//                            return;
+//                        }
+//                        if (itemstack.get(DataComponents.POTION_CONTENTS).is(PotionRegistry.INSTANT_MANA_THREE)){
+//                            itemstack.shrink(1);
+//                            event.getEntity().addItem(new ItemStack(Items.GLASS_BOTTLE));
+//                            CuriosUtils.getMagicData(event.getEntity()).addMana((float) (75+maxmana*0.15));
+//                            //event.getEntity().addEffect(new MobEffectInstance(MobEffectRegistry.INSTANT_MANA, 1, 3));
+//                            return;
+//                        }
+//                        if (itemstack.get(DataComponents.POTION_CONTENTS).is(PotionRegistry.INSTANT_MANA_TWO)){
+//                            itemstack.shrink(1);
+//                            event.getEntity().addItem(new ItemStack(Items.GLASS_BOTTLE));
+//                            CuriosUtils.getMagicData(event.getEntity()).addMana((float) (50+maxmana*0.1));
+//                            // event.getEntity().addEffect(new MobEffectInstance(MobEffectRegistry.INSTANT_MANA, 1, 2));
+//                            return;
+//                        }
+//                        if (itemstack.get(DataComponents.POTION_CONTENTS).is(PotionRegistry.INSTANT_MANA_ONE)) {
+//                            itemstack.shrink(1);
+//                            event.getEntity().addItem(new ItemStack(Items.GLASS_BOTTLE));
+//                            CuriosUtils.getMagicData(event.getEntity()).addMana((float) (25+maxmana*0.05));
+//                            //event.getEntity().addEffect(new MobEffectInstance(MobEffectRegistry.INSTANT_MANA, 1, 1));
+//                            return;
+//                        }

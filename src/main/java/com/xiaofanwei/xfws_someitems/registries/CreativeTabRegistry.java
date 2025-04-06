@@ -22,10 +22,8 @@ public class CreativeTabRegistry {
         CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder()
                 .title(Component.translatable("itemGroup.examplemod"))
                 .withTabsBefore(CreativeModeTabs.COMBAT)
-                .icon(() -> com.xiaofanwei.xfws_someitems.registries.ItemRegistries.EXAMPLE_ITEM.get().getDefaultInstance())
+                .icon(() -> com.xiaofanwei.xfws_someitems.registries.ItemRegistries.NATURE_GIFT.get().getDefaultInstance())
                 .displayItems((parameters, output) -> {
-                    output.accept(ItemRegistries.EXAMPLE_ITEM.get());
-                    output.accept(ItemRegistries.EXAMPLE_BLOCK.get());
                     output.accept(ItemRegistries.NATURE_GIFT.get());
                     output.accept(ItemRegistries.MANA_FLOWER.get());
                     output.accept(ItemRegistries.MAGNET_FLOWER.get());
