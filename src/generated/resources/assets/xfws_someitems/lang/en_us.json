@@ -6,9 +6,13 @@
   "item.xfws_someitems.mana_flower": "Mana Flower",
   "item.xfws_someitems.mana_regeneration_band": "Mana Regeneration Band",
   "item.xfws_someitems.nature_gift": "Nature Gift",
+  "item.xfws_someitems.sculk_katana": "§3Sculk Katana",
+  "item.xfws_someitems.sculk_megaphone": "Sculk Megaphone",
   "jei.tooltip.item.xfws_someitems.band_of_starpower": "You can find it in the Magician's Cabin",
+  "jei.tooltip.item.xfws_someitems.nature_gift": "Destruction of cave vines has a chance of obtaining",
   "tooltip.item.xfws_someitems.magic_cuffs": "Restore 10 times the mana value of the damage received after injury",
   "tooltip.item.xfws_someitems.magnet_flower": "When you need mana, automatically use the mana potion in your backpack",
   "tooltip.item.xfws_someitems.mana_flower": "When you need mana, automatically use the mana potion in your backpack",
-  "xfws_someitems.creativemodetab": "xiaofanwei's items"
+  "tooltip.item.xfws_someitems.sculk_katana": "Swing this sword and launch a sonic boom",
+  "tooltip.item.xfws_someitems.sculk_megaphone": "Increases the range and damage of the Sonic Boom of the Sculk Katana"
 }

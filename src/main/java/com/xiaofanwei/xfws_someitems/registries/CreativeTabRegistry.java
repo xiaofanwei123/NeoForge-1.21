@@ -27,6 +27,9 @@ public class CreativeTabRegistry {
                     ItemRegistries.CURIOS.getEntries().forEach((item) -> {
                         output.accept(item.get());
                             });
+                    ItemRegistries.ITEMS.getEntries().forEach((item) -> {
+                        output.accept(item.get());
+                    });
                 }).build());
 
     }

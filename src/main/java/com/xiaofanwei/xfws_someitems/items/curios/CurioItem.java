@@ -48,21 +48,22 @@ public class CurioItem extends Item implements ICurioItem {
     //无法穿戴相同
     @Override
     public boolean canEquip(SlotContext slotContext, ItemStack stack) {
-        LivingEntity entity= slotContext.entity();
-        Optional<ICuriosItemHandler> curiosInventory = CuriosApi.getCuriosInventory(entity);
-        if (curiosInventory.isEmpty()) {
-            return true;
-        }
-        for (ICurioStacksHandler curioStacksHandler : curiosInventory.get().getCurios().values()) {
-            IDynamicStackHandler stackHandler = curioStacksHandler.getStacks();
-            for (int i = 0; i < stackHandler.getSlots(); i++) {
-                ItemStack itemstack = stackHandler.getStackInSlot(i);
-                if (!itemstack.isEmpty() && itemstack.getItem() == stack.getItem()) {
-                    return false;
-                }
-            }
-        }
-        return true;
+//        LivingEntity entity= slotContext.entity();
+//        Optional<ICuriosItemHandler> curiosInventory = CuriosApi.getCuriosInventory(entity);
+//        if (curiosInventory.isEmpty()) {
+//            return true;
+//        }
+//        for (ICurioStacksHandler curioStacksHandler : curiosInventory.get().getCurios().values()) {
+//            IDynamicStackHandler stackHandler = curioStacksHandler.getStacks();
+//            for (int i = 0; i < stackHandler.getSlots(); i++) {
+//                ItemStack itemstack = stackHandler.getStackInSlot(i);
+//                if (!itemstack.isEmpty() && itemstack.getItem() == stack.getItem()) {
+//                    return false;
+//                }
+//            }
+//        }
+//        return true;
+        return !CuriosUtils.isPresence(slotContext.entity(),stack.getItem());
     }
 
     @Override
