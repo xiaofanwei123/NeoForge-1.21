@@ -1,18 +1,18 @@
 {
-  "type": "minecraft:chest",
+  "type": "minecraft:block",
   "pools": [
     {
       "rolls": 1,
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "xfws_someitems:band_of_starpower"
+          "name": "xfws_someitems:nature_gift"
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:random_chance",
-          "chance": 0.2
+          "chance": 0.05
         }
       ]
     }

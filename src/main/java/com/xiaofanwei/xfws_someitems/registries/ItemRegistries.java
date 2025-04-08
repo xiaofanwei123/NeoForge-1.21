@@ -1,13 +1,15 @@
 package com.xiaofanwei.xfws_someitems.registries;
 
 import com.xiaofanwei.xfws_someitems.items.curios.CurioItem;
+import com.xiaofanwei.xfws_someitems.items.sword.ModTier;
+import com.xiaofanwei.xfws_someitems.items.sword.Sculk_Katana;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.SwordItem;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.confluence.terra_curio.common.init.TCAttributes;
 
@@ -18,8 +20,10 @@ import static net.minecraft.world.entity.ai.attributes.AttributeModifier.Operati
 import static net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL;
 
 public class ItemRegistries {
-    private static final DeferredRegister.Items ITEMS = DeferredRegister.createItems("xfws_someitems");
+    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems("xfws_someitems");
     public static final DeferredRegister.Items CURIOS = DeferredRegister.createItems("xfws_someitems");
+
+    public static final DeferredItem<SwordItem> SCULK_KATANA;
 
     public static final Supplier<CurioItem> NATURE_GIFT;
     public static final Supplier<CurioItem> BAND_OF_STARPOWER;
@@ -34,13 +38,19 @@ public class ItemRegistries {
 
     public static void register(IEventBus eventBus) {
         CURIOS.register(eventBus);
+        ITEMS.register(eventBus);
+    }
+
+    static{
+        SCULK_KATANA = ITEMS.register("sculk_katana", ()-> new Sculk_Katana(ModTier.SCULK_KATANA, 10,1.6f));
     }
 
     static {
+
         ANCIENT_FOSSIL=registerCurio("ancient_fossil",builder -> builder
                 .addAttributeModifier(Attributes.BLOCK_BREAK_SPEED, 0.15, ADD_MULTIPLIED_TOTAL));
 
-        NATURE_GIFT = registerCurio("nature_gift",builder -> builder
+        NATURE_GIFT = registerCurio("nature_gift",builder -> builder.jeiTooltip()
                 .addAttributeModifier(AttributeRegistry.COOLDOWN_REDUCTION, 0.05, ADD_MULTIPLIED_TOTAL));
 
         BAND_OF_STARPOWER= registerCurio("band_of_starpower",builder -> builder.jeiTooltip()

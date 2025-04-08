@@ -25,13 +25,14 @@ public class Language extends LanguageProvider {
     }
 
     private void addItem() {
-        addItem(ItemRegistries.NATURE_GIFT, "Nature Gift","大自然的礼物");
+        addItemAndJeiInfo(ItemRegistries.NATURE_GIFT, "Nature Gift","大自然的礼物","Destruction of cave vines has a chance of obtaining","破坏洞穴藤蔓有概率获得");
         addItem(ItemRegistries.MANA_REGENERATION_BAND, "Mana Regeneration Band","魔力再生手环");
         addItem(ItemRegistries.ANCIENT_FOSSIL, "Ancient Fossil","远古化石");
         addItemAndJeiInfo(ItemRegistries.BAND_OF_STARPOWER, "Band of Starpower","星力手环", "You can find it in the Magician's Cabin","你可以在魔法师小屋找到");
         addItemAndTooltip(ItemRegistries.MANA_FLOWER, "Mana Flower","魔力花","When you need mana, automatically use the mana potion in your backpack","当你需要法力时，自动使用你背包的法力药水");
         addItemAndTooltip(ItemRegistries.MAGNET_FLOWER, "Magnet Flower","奥术花","When you need mana, automatically use the mana potion in your backpack","当你需要法力时，自动使用你背包的法力药水");
         addItemAndTooltip(ItemRegistries.MAGIC_CUFFS, "Magic Cuffs","魔法手铐","Restore 10 times the mana value of the damage received after injury","受伤后恢复受到伤害10倍的法力值");
+        addItemAndTooltip(ItemRegistries.SCULK_KATANA, "§3Sculk Katana","§3幽匿太刀","Swing this sword and launch a sonic boom","空挥发射一道音爆");
     }
 
     private void addItemAndJeiInfo(Supplier<? extends Item> item, String enName, String zhName, String enJeiInfo, String zhJeiInfo) {
