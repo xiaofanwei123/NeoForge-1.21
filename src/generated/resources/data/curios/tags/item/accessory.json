@@ -5,8 +5,12 @@
     "xfws_someitems:nature_gift",
     "xfws_someitems:band_of_starpower",
     "xfws_someitems:mana_flower",
+    "xfws_someitems:arcane_flower",
     "xfws_someitems:magnet_flower",
     "xfws_someitems:mana_regeneration_band",
-    "xfws_someitems:magic_cuffs"
+    "xfws_someitems:magic_cuffs",
+    "xfws_someitems:celestial_magnet",
+    "xfws_someitems:celestial_cuffs",
+    "xfws_someitems:ethereal_lantern"
   ]
 }

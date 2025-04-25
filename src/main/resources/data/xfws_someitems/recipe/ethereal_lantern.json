@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " C ",
+    "ADA",
+    "ABA"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:iron_ingot"
+    },
+    "B": {
+      "item": "irons_spellbooks:arcane_ingot"
+    },
+    "C": {
+      "item": "irons_spellbooks:mithril_ingot"
+    },
+    "D": {
+      "item": "minecraft.lantern"
+    }
+  },
+  "result": {
+    "id": "xfws_someitems:ethereal_lantern"
+  }
+}

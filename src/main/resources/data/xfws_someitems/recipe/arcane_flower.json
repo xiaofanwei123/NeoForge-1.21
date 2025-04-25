@@ -5,10 +5,10 @@
       "item": "xfws_someitems:mana_flower"
     },
     {
-      "item": "xfws_someitems:celestial_magnet"
+      "item": "terra_curio:putrid_scent"
     }
   ],
   "result": {
-    "id": "xfws_someitems:magnet_flower"
+    "id": "xfws_someitems:arcane_flower"
   }
 }

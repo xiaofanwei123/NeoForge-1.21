@@ -1,0 +1,26 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "xfws_someitems:item/ethereal_lantern"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "xfws_someitems:damage": 0.0
+      },
+      "model": "xfws_someitems:item/ethereal_lantern_0"
+    },
+    {
+      "predicate": {
+        "xfws_someitems:damage": 0.5
+      },
+      "model": "xfws_someitems:item/ethereal_lantern_1"
+    },
+    {
+      "predicate": {
+        "xfws_someitems:damage": 1.0
+      },
+      "model": "xfws_someitems:item/ethereal_lantern_2"
+    }
+  ]
+}

@@ -4,10 +4,10 @@ import com.xiaofanwei.xfws_someitems.MoreAC;
 import com.xiaofanwei.xfws_someitems.registries.ItemRegistries;
 import com.xiaofanwei.xfws_someitems.registries.MobEffectRegistry;
 import com.xiaofanwei.xfws_someitems.util.CuriosUtils;
+import com.xiaofanwei.xfws_someitems.util.XUtils;
 import io.redspace.ironsspellbooks.api.magic.SpellSelectionManager;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.registries.PotionRegistry;
-import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -24,14 +24,18 @@ public class GameEvent {
     @SubscribeEvent
     private static void magicflower(SpellSelectionManager.SpellSelectionEvent event) {
         if (event.getEntity().level().isClientSide()) return;
-        if (!(CuriosUtils.isPresence(event.getEntity(), ItemRegistries.MANA_FLOWER.get())
-        || CuriosUtils.isPresence(event.getEntity(), ItemRegistries.MAGNET_FLOWER.get()))) return;
+        if (!CuriosUtils.isPresence(event.getEntity(),
+                ItemRegistries.MAGNET_FLOWER.get(),
+                ItemRegistries.ARCANE_FLOWER.get(),
+                ItemRegistries.MANA_FLOWER.get()
+        )) return;
+
         if (event.getEntity() instanceof Player && event.getManager().getSelection() != null) {
             int spelllevel = event.getManager().getSelection().spellData.getLevel();
             int costmana = event.getManager().getSelection().spellData.getSpell().getManaCost(spelllevel);
             double maxmana = event.getEntity().getAttributeValue(AttributeRegistry.MAX_MANA);
             if (costmana > maxmana) return;
-            double leftmana = CuriosUtils.getMagicData(event.getEntity()).getMana();
+            double leftmana = XUtils.getPresentMana(event.getEntity());
             if (costmana > leftmana && leftmana != 0) {
                 for (ItemStack itemstack : event.getEntity().getInventory().items) {
                     if (itemstack.getItem() instanceof PotionItem) {
@@ -66,7 +70,7 @@ public class GameEvent {
         itemstack.shrink(1);
         player.addItem(new ItemStack(Items.GLASS_BOTTLE));
         player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.GENERIC_DRINK, player.getSoundSource(), 2.0F, 1.0F);
-        CuriosUtils.getMagicData(player).addMana((float) (parameter+maxmana*parameter/500));
+        XUtils.addMana(player,(float) (parameter+maxmana*parameter/500));
         player.addEffect(new MobEffectInstance(MobEffectRegistry.MANA_SiCKNESS, 8*20, (parameter/25)-1, true, true));
     }
 

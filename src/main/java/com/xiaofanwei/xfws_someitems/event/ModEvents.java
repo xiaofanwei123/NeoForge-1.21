@@ -4,18 +4,11 @@ import com.xiaofanwei.xfws_someitems.MoreAC;
 import com.xiaofanwei.xfws_someitems.items.sword.MessageSwingArm;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
 @EventBusSubscriber(modid = MoreAC.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class ModEvents {
-//    @SubscribeEvent
-//    public static void commonSetup(FMLCommonSetupEvent event) {
-//        event.enqueueWork(() -> {
-//
-//        });
-//    }
 
     @SubscribeEvent
     public static void registerPayloadHandlers(RegisterPayloadHandlersEvent event) {

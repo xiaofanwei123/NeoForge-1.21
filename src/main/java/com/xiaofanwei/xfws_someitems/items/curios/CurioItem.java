@@ -7,38 +7,30 @@ import com.google.common.collect.Multimap;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import com.xiaofanwei.xfws_someitems.util.CuriosUtils;
 import org.jetbrains.annotations.ApiStatus;
-import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 import net.minecraft.world.entity.ai.attributes.Attribute;
-import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
-import top.theillusivec4.curios.api.type.inventory.ICurioStacksHandler;
-import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class CurioItem extends Item implements ICurioItem {
-    private final List<Component> tooltipComponents;
     private final boolean enableJeiTooltip;
-
     protected static final ImmutableMultimap<Holder<Attribute>, AttributeModifier> EMPTY_ATTRIBUTE = ImmutableMultimap.of();
     protected Builder builder;
 
     public CurioItem(Builder builder) {
         super(builder.initialize().properties);
         this.builder = builder;
-        this.tooltipComponents = builder.tooltipComponents;
         this.enableJeiTooltip = builder.enableJeiTooltip;
     }
+
 
     @Override
     public boolean canEquipFromUse(SlotContext slotContext, ItemStack stack) {
@@ -48,21 +40,6 @@ public class CurioItem extends Item implements ICurioItem {
     //无法穿戴相同
     @Override
     public boolean canEquip(SlotContext slotContext, ItemStack stack) {
-//        LivingEntity entity= slotContext.entity();
-//        Optional<ICuriosItemHandler> curiosInventory = CuriosApi.getCuriosInventory(entity);
-//        if (curiosInventory.isEmpty()) {
-//            return true;
-//        }
-//        for (ICurioStacksHandler curioStacksHandler : curiosInventory.get().getCurios().values()) {
-//            IDynamicStackHandler stackHandler = curioStacksHandler.getStacks();
-//            for (int i = 0; i < stackHandler.getSlots(); i++) {
-//                ItemStack itemstack = stackHandler.getStackInSlot(i);
-//                if (!itemstack.isEmpty() && itemstack.getItem() == stack.getItem()) {
-//                    return false;
-//                }
-//            }
-//        }
-//        return true;
         return !CuriosUtils.isPresence(slotContext.entity(),stack.getItem());
     }
 
@@ -84,9 +61,9 @@ public class CurioItem extends Item implements ICurioItem {
     }
 
     public static class Builder {
-        private List<Component> tooltipComponents = new ArrayList<>();
-        private boolean enableJeiTooltip = false;
         private final String itemName;
+        private final List<Component> tooltipComponents = new ArrayList<>();
+        private boolean enableJeiTooltip = false;
         private Item.Properties properties = new Item.Properties();
         private transient ImmutableMultimap.Builder<Holder<Attribute>, AttributeModifier> attributesBuilder = ImmutableMultimap.builder();
         private ImmutableMultimap<Holder<Attribute>, AttributeModifier> attributes;
@@ -107,7 +84,17 @@ public class CurioItem extends Item implements ICurioItem {
             return this;
         }
 
-        public Builder jeiTooltip() {
+        public Builder addTooltips(int num) {
+            if(num>1){
+                for (int i = 0; i < num; i++){
+                    String key = "tooltip.item." + MoreAC.MODID + "." + itemName + "."+ i;
+                    this.tooltipComponents.add(Component.translatable(key));
+                }
+            }
+            return this;
+        }
+
+        public Builder addJeiTooltip() {
             this.enableJeiTooltip = true;
             return this;
         }
@@ -133,8 +120,7 @@ public class CurioItem extends Item implements ICurioItem {
 
     @Override
     public void appendHoverText(ItemStack pStack, TooltipContext context, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        super.appendHoverText(pStack, context, pTooltipComponents, pIsAdvanced);
-        pTooltipComponents.addAll(tooltipComponents);
+        pTooltipComponents.addAll(this.builder.tooltipComponents);
     }
 
 }

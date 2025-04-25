@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ABC",
+    "DEB",
+    "FDA"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:bone"
+    },
+    "B": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "C": {
+      "item": "minecraft:echo_shard"
+    },
+    "D": {
+      "item": "minecraft:rotten_flesh"
+    },
+    "E": {
+      "item": "terra_curio:magic_mirror"
+    },
+    "F": {
+      "item": "minecraft:ender_pearl"
+    }
+  },
+  "result": {
+    "id": "xfws_someitems:the_mirror_of_death_gaze"
+  }
+}

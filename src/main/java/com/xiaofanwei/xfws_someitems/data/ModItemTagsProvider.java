@@ -27,5 +27,6 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         ItemRegistries.CURIOS.getEntries().forEach((item) -> {
             accessory.add((Item)item.get());
         });
+        accessory.add(ItemRegistries.ETHEREAI_LANTERN.get());
     }
 }
