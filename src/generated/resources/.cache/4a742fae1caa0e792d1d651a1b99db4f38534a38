@@ -1,6 +1,9 @@
-// 1.21.1	2025-04-10T18:12:17.6124273	Item Models: xfws_someitems
+// 1.21.1	2025-04-25T18:56:38.2464985	Item Models: xfws_someitems
 42dac9eb2c8b7bb2bc4e19dbffd74d8460bf35a4 assets/xfws_someitems/models/item/ancient_fossil.json
+3519cc92d28f0b6ce476e5457285553c4dec11f1 assets/xfws_someitems/models/item/arcane_flower.json
 6e34abd2e40d4d0abe6281f8e304375f74c9871f assets/xfws_someitems/models/item/band_of_starpower.json
+0295cfc1f756d9ffd0269aa27ae87b833aad741a assets/xfws_someitems/models/item/celestial_cuffs.json
+041c8e73a132749870f68a9e2460cfca9b58d958 assets/xfws_someitems/models/item/celestial_magnet.json
 c68b1f0286aae51ae6e7f865b84599f1818abaf9 assets/xfws_someitems/models/item/magic_cuffs.json
 c6b86b216f712f09cfcbce4fc1a3aea7cc75dd7c assets/xfws_someitems/models/item/magnet_flower.json
 9a62d18a05ee3ac77fc7695d803185ac00fb0099 assets/xfws_someitems/models/item/mana_flower.json

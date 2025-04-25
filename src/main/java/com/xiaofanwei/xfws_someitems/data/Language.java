@@ -1,7 +1,6 @@
 package com.xiaofanwei.xfws_someitems.data;
 
 import com.xiaofanwei.xfws_someitems.MoreAC;
-import com.xiaofanwei.xfws_someitems.items.curios.CurioItem;
 import com.xiaofanwei.xfws_someitems.registries.ItemRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
@@ -22,6 +21,9 @@ public class Language extends LanguageProvider {
     @Override
     protected void addTranslations() {
         addItem();
+        add("effect.xfws_someitems.mana_sickness", "Mana Sickness","魔力病");
+        add("xfws_someitems.creativemodetab","xfw's some items","小烦维的物品");
+        add("attribute.xfws_someitems.manastar_distance","Mana Star Pick Up Distance","魔力星星拾取距离");
     }
 
     private void addItem() {
@@ -30,10 +32,20 @@ public class Language extends LanguageProvider {
         addItem(ItemRegistries.ANCIENT_FOSSIL, "Ancient Fossil","远古化石");
         addItemAndJeiInfo(ItemRegistries.BAND_OF_STARPOWER, "Band of Starpower","星力手环", "You can find it in the Magician's Cabin","你可以在魔法师小屋找到");
         addItemAndTooltip(ItemRegistries.MANA_FLOWER, "Mana Flower","魔力花","When you need mana, automatically use the mana potion in your backpack","当你需要法力时，自动使用你背包的法力药水");
-        addItemAndTooltip(ItemRegistries.MAGNET_FLOWER, "Magnet Flower","奥术花","When you need mana, automatically use the mana potion in your backpack","当你需要法力时，自动使用你背包的法力药水");
+        addItemAndTooltip(ItemRegistries.MAGNET_FLOWER, "Magnet Flower","奥术花","When you need mana, automatically use the mana potion in your backpack.Greatly increasing the pickup range for Stars","当你需要法力时，自动使用你背包的法力药水。大大增加星星的拾取范围");
         addItemAndTooltip(ItemRegistries.MAGIC_CUFFS, "Magic Cuffs","魔法手铐","Restore 10 times the mana value of the damage received after injury","受伤后恢复受到伤害10倍的法力值");
         addItemAndTooltip(ItemRegistries.SCULK_KATANA, "§3Sculk Katana","§3幽匿太刀","Swing this sword and launch a sonic boom","空挥发射一道音爆");
         addItemAndTooltip(ItemRegistries.SCULK_MEGAPHONE, "Sculk Megaphone","幽匿扩音器","Increases the range and damage of the Sonic Boom of the Sculk Katana","增加幽匿太刀音爆的距离和伤害");
+        addItemAndTooltip(ItemRegistries.ARCANE_FLOWER, "Arcane Flower","奥术花","When you need mana, automatically use the mana potion in your backpack","当你需要法力时，自动使用你背包的法力药水");
+        addItemAndTooltip(ItemRegistries.CELESTIAL_CUFFS, "Celestial Cuffs","天界手铐","Restore 10 times the mana value of the damage received after injury","受伤后恢复受到伤害10倍的法力值,增大魔力星星的拾取距离");
+        addItemAndTooltipAndJeiInfo(ItemRegistries.CELESTIAL_MAGNET, "Celestial Magnet","天界磁石","Increase the picking distance of mana stars","增大魔力星星的拾取距离", "You can find it in the Magician's Cabin","你可以在魔法师小屋找到");
+
+    }
+
+    private void addItemAndTooltipAndJeiInfo(Supplier<? extends Item> item, String enName, String zhName,String TooltipenName, String TooltipzhName,String JeiInfoenName, String JeiInfozhName) {
+        String key = item.get().getDescriptionId();
+        this.addJeiInfos(key, JeiInfoenName, JeiInfozhName);
+        this.addItemAndTooltip(item,enName, zhName, TooltipenName, TooltipzhName);
     }
 
     private void addItemAndJeiInfo(Supplier<? extends Item> item, String enName, String zhName, String enJeiInfo, String zhJeiInfo) {
@@ -71,12 +83,12 @@ public class Language extends LanguageProvider {
         add(key, enName, zhName);
     }
 
-    private void add(String item, String en, String zh) {
+    private void add(String key, String en, String zh) {
         if (this.locale.equals("en_us")) {
-            add(item, en);
+            add(key, en);
         }
         else if (this.locale.equals("zh_cn")) {
-            add(item, zh);
+            add(key, zh);
         }
     }
 }

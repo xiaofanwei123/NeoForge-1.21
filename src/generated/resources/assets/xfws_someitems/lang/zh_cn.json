@@ -1,6 +1,11 @@
 {
+  "attribute.xfws_someitems.manastar_distance": "魔力星星拾取距离",
+  "effect.xfws_someitems.mana_sickness": "魔力病",
   "item.xfws_someitems.ancient_fossil": "远古化石",
+  "item.xfws_someitems.arcane_flower": "奥术花",
   "item.xfws_someitems.band_of_starpower": "星力手环",
+  "item.xfws_someitems.celestial_cuffs": "天界手铐",
+  "item.xfws_someitems.celestial_magnet": "天界磁石",
   "item.xfws_someitems.magic_cuffs": "魔法手铐",
   "item.xfws_someitems.magnet_flower": "奥术花",
   "item.xfws_someitems.mana_flower": "魔力花",
@@ -9,10 +14,15 @@
   "item.xfws_someitems.sculk_katana": "§3幽匿太刀",
   "item.xfws_someitems.sculk_megaphone": "幽匿扩音器",
   "jei.tooltip.item.xfws_someitems.band_of_starpower": "你可以在魔法师小屋找到",
+  "jei.tooltip.item.xfws_someitems.celestial_magnet": "你可以在魔法师小屋找到",
   "jei.tooltip.item.xfws_someitems.nature_gift": "破坏洞穴藤蔓有概率获得",
+  "tooltip.item.xfws_someitems.arcane_flower": "当你需要法力时，自动使用你背包的法力药水",
+  "tooltip.item.xfws_someitems.celestial_cuffs": "受伤后恢复受到伤害10倍的法力值,增大魔力星星的拾取距离",
+  "tooltip.item.xfws_someitems.celestial_magnet": "增大魔力星星的拾取距离",
   "tooltip.item.xfws_someitems.magic_cuffs": "受伤后恢复受到伤害10倍的法力值",
-  "tooltip.item.xfws_someitems.magnet_flower": "当你需要法力时，自动使用你背包的法力药水",
+  "tooltip.item.xfws_someitems.magnet_flower": "当你需要法力时，自动使用你背包的法力药水。大大增加星星的拾取范围",
   "tooltip.item.xfws_someitems.mana_flower": "当你需要法力时，自动使用你背包的法力药水",
   "tooltip.item.xfws_someitems.sculk_katana": "空挥发射一道音爆",
-  "tooltip.item.xfws_someitems.sculk_megaphone": "增加幽匿太刀音爆的距离和伤害"
+  "tooltip.item.xfws_someitems.sculk_megaphone": "增加幽匿太刀音爆的距离和伤害",
+  "xfws_someitems.creativemodetab": "小烦维的物品"
 }

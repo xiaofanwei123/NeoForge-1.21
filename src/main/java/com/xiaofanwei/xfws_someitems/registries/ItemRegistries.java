@@ -1,10 +1,10 @@
 package com.xiaofanwei.xfws_someitems.registries;
 
 import com.xiaofanwei.xfws_someitems.items.curios.CurioItem;
-import com.xiaofanwei.xfws_someitems.items.sword.ModTier;
 import com.xiaofanwei.xfws_someitems.items.sword.Sculk_Katana;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.Unit;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -31,13 +31,17 @@ public class ItemRegistries {
 
     public static final Supplier<CurioItem> NATURE_GIFT;
     public static final Supplier<CurioItem> BAND_OF_STARPOWER;
+
     public static final Supplier<CurioItem> MANA_FLOWER;
+
     public static final Supplier<CurioItem> MAGNET_FLOWER;
     public static final Supplier<CurioItem> MANA_REGENERATION_BAND;
     public static final Supplier<CurioItem> MAGIC_CUFFS;
     public static final Supplier<CurioItem> ANCIENT_FOSSIL;
-    //sculk_megaphone
     public static final Supplier<CurioItem> SCULK_MEGAPHONE;
+    public static final Supplier<CurioItem> ARCANE_FLOWER;
+    public static final Supplier<CurioItem> CELESTIAL_MAGNET;
+    public static final Supplier<CurioItem> CELESTIAL_CUFFS;
 
     public ItemRegistries() {
     }
@@ -69,23 +73,41 @@ public class ItemRegistries {
                 .addTooltip(),
                 new Item.Properties().rarity(Rarity.RARE));
 
+        ARCANE_FLOWER= registerCurio("arcane_flower",builder -> builder
+                        .addAttributeModifier(AttributeRegistry.COOLDOWN_REDUCTION, 0.1, ADD_MULTIPLIED_TOTAL)
+                        .addAttributeModifier(TCAttributes.AGGRO, -300, ADD_VALUE)
+                        .addTooltip(),
+                new Item.Properties().rarity(Rarity.EPIC));
+
         MAGNET_FLOWER= registerCurio("magnet_flower",builder -> builder
                 .addAttributeModifier(AttributeRegistry.COOLDOWN_REDUCTION, 0.1, ADD_MULTIPLIED_TOTAL)
-                .addAttributeModifier(TCAttributes.AGGRO, -300, ADD_VALUE)
+                .addAttributeModifier(XAttributeRegistry.MANASTAR_DISTANCE, 20, ADD_VALUE)
                 .addTooltip(),
                 new Item.Properties().rarity(Rarity.EPIC));
 
         MANA_REGENERATION_BAND =registerCurio("mana_regeneration_band", builder -> builder
                 .addAttributeModifier(AttributeRegistry.MAX_MANA, 50, ADD_VALUE)
-                .addAttributeModifier(AttributeRegistry.MANA_REGEN, 0.1, ADD_MULTIPLIED_TOTAL),
+                .addAttributeModifier(AttributeRegistry.MANA_REGEN, 0.05, ADD_MULTIPLIED_TOTAL),
                 new Item.Properties().rarity(Rarity.RARE));
 
         MAGIC_CUFFS = registerCurio("magic_cuffs", builder -> builder
                 .addAttributeModifier(AttributeRegistry.MAX_MANA, 100, ADD_VALUE)
-                .addAttributeModifier(AttributeRegistry.MANA_REGEN, 0.15, ADD_MULTIPLIED_TOTAL)
+                .addAttributeModifier(AttributeRegistry.MANA_REGEN, 0.10, ADD_MULTIPLIED_TOTAL)
                 .addTooltip(),
                 new Item.Properties().rarity(Rarity.EPIC));
 
+        CELESTIAL_MAGNET = registerCurio("celestial_magnet", builder -> builder
+                .addTooltip()
+                .jeiTooltip()
+                .addAttributeModifier(XAttributeRegistry.MANASTAR_DISTANCE, 15, ADD_VALUE)
+                , new Item.Properties().rarity(Rarity.UNCOMMON));
+
+        CELESTIAL_CUFFS= registerCurio("celestial_cuffs", builder -> builder
+                .addAttributeModifier(AttributeRegistry.MAX_MANA, 125, ADD_VALUE)
+                .addAttributeModifier(AttributeRegistry.MANA_REGEN, 0.15, ADD_MULTIPLIED_TOTAL)
+                .addAttributeModifier(XAttributeRegistry.MANASTAR_DISTANCE, 20, ADD_VALUE)
+                .addTooltip()
+                , new Item.Properties().rarity(Rarity.EPIC));
 }
 
     public static Supplier<CurioItem> registerCurio(String name, Consumer<CurioItem.Builder> consumer, Item.Properties properties) {
@@ -103,4 +125,7 @@ public class ItemRegistries {
             return builder.build();
         });
     }
+    
+
+
 }

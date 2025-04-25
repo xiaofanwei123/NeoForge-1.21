@@ -1,9 +1,6 @@
 package com.xiaofanwei.xfws_someitems;
 
-import com.xiaofanwei.xfws_someitems.registries.BlockRegistries;
-import com.xiaofanwei.xfws_someitems.registries.CreativeTabRegistry;
-import com.xiaofanwei.xfws_someitems.registries.ItemRegistries;
-import com.xiaofanwei.xfws_someitems.registries.MobEffectRegistry;
+import com.xiaofanwei.xfws_someitems.registries.*;
 import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 
@@ -41,7 +38,10 @@ public class MoreAC
         ItemRegistries.register(modEventBus);
         CreativeTabRegistry.register(modEventBus);
         MobEffectRegistry.register(modEventBus);
+        XAttributeRegistry.register(modEventBus);
         NeoForge.EVENT_BUS.register(this);
+
+        EntityRegistry.register(modEventBus);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 

@@ -1,0 +1,14 @@
+{
+  "type": "terra_curio:workshop",
+  "ingredients": [
+    {
+      "item": "xfws_someitems:celestial_magnet"
+    },
+    {
+      "item": "xfws_someitems:magic_cuffs"
+    }
+  ],
+  "result": {
+    "id": "xfws_someitems:celestial_cuffs"
+  }
+}

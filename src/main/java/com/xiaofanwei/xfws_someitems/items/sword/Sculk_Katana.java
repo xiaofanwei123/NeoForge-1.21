@@ -66,7 +66,7 @@ public class Sculk_Katana extends SwordItem {
         AABB boundingBox = player.getBoundingBox().expandTowards(end.subtract(start));
         List<? extends Entity> entities = player.level().getEntities(player, boundingBox);
         Iterator var11 = entities.iterator();
-        player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.WARDEN_SONIC_BOOM, player.getSoundSource(),1,1);
+        player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.WARDEN_SONIC_BOOM, player.getSoundSource(),1F,1F);
         while(var11.hasNext()) {
             Entity target = (Entity)var11.next();
             HitResult hit = Utils.checkEntityIntersecting(target, start, end, 0.4F);
