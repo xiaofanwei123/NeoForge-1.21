@@ -6,11 +6,11 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
-public class BlockRegistries {
+public class BlockRegistry {
     private static final DeferredRegister.Blocks BLOCKS =DeferredRegister.createBlocks("xfws_someitems");
     public static final DeferredBlock<Block> EXAMPLE_BLOCK;
 
-    public BlockRegistries() {
+    public BlockRegistry() {
     }
 
     public static void register(IEventBus eventBus) {

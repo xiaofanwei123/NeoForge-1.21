@@ -1,8 +1,8 @@
 package com.xiaofanwei.xfws_someitems.event;
 
 import com.xiaofanwei.xfws_someitems.MoreAC;
-import com.xiaofanwei.xfws_someitems.registries.ItemRegistries;
-import com.xiaofanwei.xfws_someitems.registries.MobEffectRegistry;
+import com.xiaofanwei.xfws_someitems.registries.XItemRegistry;
+import com.xiaofanwei.xfws_someitems.registries.XMobEffectRegistry;
 import com.xiaofanwei.xfws_someitems.util.CuriosUtils;
 import com.xiaofanwei.xfws_someitems.util.XUtils;
 import io.redspace.ironsspellbooks.api.magic.SpellSelectionManager;
@@ -25,9 +25,9 @@ public class GameEvent {
     private static void magicflower(SpellSelectionManager.SpellSelectionEvent event) {
         if (event.getEntity().level().isClientSide()) return;
         if (!CuriosUtils.isPresence(event.getEntity(),
-                ItemRegistries.MAGNET_FLOWER.get(),
-                ItemRegistries.ARCANE_FLOWER.get(),
-                ItemRegistries.MANA_FLOWER.get()
+                XItemRegistry.MAGNET_FLOWER.get(),
+                XItemRegistry.ARCANE_FLOWER.get(),
+                XItemRegistry.MANA_FLOWER.get()
         )) return;
 
         if (event.getEntity() instanceof Player && event.getManager().getSelection() != null) {
@@ -71,7 +71,7 @@ public class GameEvent {
         player.addItem(new ItemStack(Items.GLASS_BOTTLE));
         player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.GENERIC_DRINK, player.getSoundSource(), 2.0F, 1.0F);
         XUtils.addMana(player,(float) (parameter+maxmana*parameter/500));
-        player.addEffect(new MobEffectInstance(MobEffectRegistry.MANA_SiCKNESS, 8*20, (parameter/25)-1, true, true));
+        player.addEffect(new MobEffectInstance(XMobEffectRegistry.MANA_SiCKNESS, 8*20, (parameter/25)-1, true, true));
     }
 
 

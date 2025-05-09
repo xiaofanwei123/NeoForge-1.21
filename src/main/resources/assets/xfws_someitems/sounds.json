@@ -1,0 +1,24 @@
+{
+    "scissor_guillotine_snap": {
+        "sounds": [
+            "xfws_someitems:scissor_guillotine_snap"
+        ]
+    },
+    "crystal_impact": {
+        "sounds": [
+            "xfws_someitems:crystal_impact_0",
+            "xfws_someitems:crystal_impact_1",
+            "xfws_someitems:crystal_impact_2"
+        ]
+    },
+    "razorblade_typhoon": {
+        "sounds": [
+            "xfws_someitems:razorblade_typhoon"
+        ]
+    },
+    "jingle_bells": {
+        "sounds": [
+            "xfws_someitems:jingle_bells"
+        ]
+    }
+}

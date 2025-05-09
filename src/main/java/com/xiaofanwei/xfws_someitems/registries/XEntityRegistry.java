@@ -9,7 +9,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public class EntityRegistry {
+public class XEntityRegistry {
     private static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Registries.ENTITY_TYPE,MoreAC.MODID );
 
     public static final DeferredHolder<EntityType<?>, EntityType<ManaStar>> MANA_STAR = ENTITIES.register("mana_star", () ->

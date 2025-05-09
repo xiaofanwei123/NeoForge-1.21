@@ -1,11 +1,17 @@
 package com.xiaofanwei.xfws_someitems.items;
 
+import com.xiaofanwei.xfws_someitems.util.XUtils;
+import io.redspace.ironsspellbooks.util.IMinecraftInstanceHelper;
+import io.redspace.ironsspellbooks.util.MinecraftInstanceHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.GlobalPos;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundSetActionBarTextPacket;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -29,6 +35,13 @@ public class TheMirrorOfDeathGaze extends Item {
         return UseAnim.BOW;
     }
 
+    private GlobalPos LastDeathLocation(Player player){
+        if(player.getLastDeathLocation().isPresent()){
+            return player.getLastDeathLocation().get();
+        }
+        return null;
+    }
+
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         return ItemUtils.startUsingInstantly(level, player, hand);
@@ -41,26 +54,22 @@ public class TheMirrorOfDeathGaze extends Item {
 
     @Override
     public ItemStack finishUsingItem(ItemStack itemStack, Level level, LivingEntity living) {
-        if (living instanceof ServerPlayer serverPlayer && serverPlayer.getLastDeathLocation().isEmpty()){
+        if (living instanceof ServerPlayer serverPlayer && LastDeathLocation(serverPlayer) == null) {
             serverPlayer.connection.send(new ClientboundSetActionBarTextPacket(Component.translatable("message.xfws_someitems.the_mirror_of_death_gaze.-1").withStyle(ChatFormatting.DARK_RED)));
             return itemStack;
         }
-        if (level.isClientSide) {
-            Minecraft.getInstance().gameRenderer.displayItemActivation(itemStack);
-        }
-        if (living instanceof ServerPlayer serverPlayer) {
-            if (serverPlayer.getVehicle() != null) {
-                serverPlayer.removeVehicle();
-            }
-            serverPlayer.getCooldowns().addCooldown(this, serverPlayer.isCreative() ? 0 : 20*15);
-            ResourceKey<Level> dimension = serverPlayer.getLastDeathLocation().get().dimension();
-            ServerLevel destinationLevel = serverPlayer.server.getLevel(dimension);
-            BlockPos blockPos = serverPlayer.getLastDeathLocation().get().pos();
-            if (destinationLevel != null) {
-                serverPlayer.teleportTo( destinationLevel, blockPos.getX(), blockPos.getY(), blockPos.getZ(), serverPlayer.getYRot(), serverPlayer.getXRot());
-                serverPlayer.level().playSound(null, serverPlayer.getX(), serverPlayer.getY(), serverPlayer.getZ(), SoundEvents.ZOMBIE_INFECT, serverPlayer.getSoundSource(),1F,1F);
-                int randomInt = new Random().nextInt(5);
+
+        if (living instanceof Player player && LastDeathLocation(player) != null) {
+            player.getCooldowns().addCooldown(this, player.isCreative() ? 0 : 20*15);
+            GlobalPos globalPos = LastDeathLocation(player);
+            XUtils.teleportTo(player, globalPos.dimension().location(), globalPos.pos());
+            player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ZOMBIE_INFECT, player.getSoundSource(),1F,1F);
+            int randomInt = new Random().nextInt(5);
+            if(player instanceof ServerPlayer serverPlayer){
                 serverPlayer.connection.send(new ClientboundSetActionBarTextPacket(Component.translatable("message.xfws_someitems.the_mirror_of_death_gaze"+"."+randomInt).withStyle(ChatFormatting.DARK_PURPLE)));
+            }
+            if (level.isClientSide) {
+                Minecraft.getInstance().gameRenderer.displayItemActivation(itemStack);
             }
         }
         return itemStack;
@@ -69,6 +78,14 @@ public class TheMirrorOfDeathGaze extends Item {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         tooltipComponents.add(Component.translatable("tooltip.item.xfws_someitems.the_mirror_of_death_gaze").withStyle(ChatFormatting.DARK_PURPLE));
+        MinecraftInstanceHelper.ifPlayerPresent(player -> {
+            if(LastDeathLocation(player) != null){
+            tooltipComponents.addAll( List.of(
+                Component.translatable("tooltip.item.xfws_someitems.d").withStyle(ChatFormatting.DARK_PURPLE).append(LastDeathLocation(player).dimension().location().toString()).withStyle(ChatFormatting.LIGHT_PURPLE),
+                Component.translatable("tooltip.item.xfws_someitems.p").withStyle(ChatFormatting.DARK_PURPLE).append(LastDeathLocation(player).pos().toShortString()).withStyle(ChatFormatting.LIGHT_PURPLE)
+                    ));
+            }
+        });
     }
 
 }

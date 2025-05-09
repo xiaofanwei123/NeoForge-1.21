@@ -21,12 +21,12 @@ public class DataGenerator {
         ExistingFileHelper helper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookup = event.getLookupProvider();
         boolean client = event.includeClient();
-        generator.addProvider(client, new ModItemModelProvider(output, helper));
         boolean server = event.includeServer();
         ModBlockTagsProvider blockTagsProvider = new ModBlockTagsProvider(output, lookup, helper);
         generator.addProvider(server, blockTagsProvider);
         generator.addProvider(server, new ModItemTagsProvider(output, lookup, blockTagsProvider.contentsGetter(), helper));
         generator.addProvider(server, new Language(output, "en_us"));
         generator.addProvider(server, new Language(output, "zh_cn"));
+        generator.addProvider(client, new ModItemModelProvider(output, helper));
     }
 }

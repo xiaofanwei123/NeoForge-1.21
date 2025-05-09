@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " AB",
+    "CDA",
+    "AC "
+  ],
+  "key": {
+    "A": {
+      "item": "irons_spellbooks:pyrium_ingot"
+    },
+    "B": {
+      "item":"irons_spellbooks:mithril_ingot"
+    },
+    "C": {
+      "item":"irons_spellbooks:dragonskin"
+    },
+    "D": {
+      "item":"minecraft:nether_star"
+    }
+  },
+  "result": {
+    "id": "xfws_someitems:ark_of_the_cosmos"
+  }
+}

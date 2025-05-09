@@ -1,14 +1,13 @@
 package com.xiaofanwei.xfws_someitems.data;
 
 import com.xiaofanwei.xfws_someitems.MoreAC;
-import com.xiaofanwei.xfws_someitems.registries.ItemRegistries;
+import com.xiaofanwei.xfws_someitems.registries.XItemRegistry;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredItem;
 
 public class ModItemModelProvider extends ItemModelProvider {
     public ModItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
@@ -17,9 +16,10 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        ItemRegistries.CURIOS.getEntries().forEach(this::registerCommonModels);
-        DeferredItem<Item> item=ItemRegistries.THE_MIRROR_OF_DEATH_GAZE;
-        registerCommonModels(item);
+        XItemRegistry.COMMONCURIOS.getEntries().forEach(this::registerCommonModels);
+        XItemRegistry.COMMONITEMS.getEntries().forEach(this::registerCommonModels);
+        //DeferredItem<Item> item=XItemRegistry.THE_MIRROR_OF_DEATH_GAZE;
+        //registerCommonModels(item);
     }
 
     private void registerCommonModels(DeferredHolder<? extends Item, ? extends Item> item) {
