@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "xfws_someitems:item/ark_of_the_cosmos"
+  }
+}
