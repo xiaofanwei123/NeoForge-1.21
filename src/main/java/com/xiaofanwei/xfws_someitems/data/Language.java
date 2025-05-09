@@ -1,12 +1,11 @@
 package com.xiaofanwei.xfws_someitems.data;
 
 import com.xiaofanwei.xfws_someitems.MoreAC;
-import com.xiaofanwei.xfws_someitems.registries.ItemRegistries;
+import com.xiaofanwei.xfws_someitems.registries.XItemRegistry;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
-import java.util.List;
 import java.util.function.Supplier;
 
 
@@ -31,23 +30,57 @@ public class Language extends LanguageProvider {
         add("message.xfws_someitems.the_mirror_of_death_gaze.2","The resentment has been repaid, and the soul returns to Jiuquan. Why suffer from the calamity of dust again?","怨毒已偿，魂归九泉，何苦再涉尘劫？");
         add("message.xfws_someitems.the_mirror_of_death_gaze.3","How can the flag be lowered if the blood debt is not paid off? I have a secret method to help you eliminate all enemies!","血债未偿，岂可偃旗？吾有秘法，助汝戮尽仇雠!");
         add("message.xfws_someitems.the_mirror_of_death_gaze.4","Do you seek rebirth for revenge?","汝求重生，为复仇耶？");
+        add("tooltip.item.xfws_someitems.d","Dimension:","维度：");
+        add("tooltip.item.xfws_someitems.p","Position:","坐标：");
+
+
+        add("message.xfws_someitems.gate_glass.-1","Unknown dimension or location...","未知维度或地点...");
+        add("message.xfws_someitems.gate_glass.0","Location has been saved","地点已保存");
+        add("message.xfws_someitems.gate_glass.1","Location returned","地点已返回");
     }
 
     private void addItem() {
-        addItemAndJeiInfo(ItemRegistries.NATURE_GIFT, "Nature Gift","大自然的礼物","Destruction of cave vines has a chance of obtaining","破坏洞穴藤蔓有概率获得");
-        addItem(ItemRegistries.MANA_REGENERATION_BAND, "Mana Regeneration Band","魔力再生手环");
-        addItem(ItemRegistries.ANCIENT_FOSSIL, "Ancient Fossil","远古化石");
-        addItemAndJeiInfo(ItemRegistries.BAND_OF_STARPOWER, "Band of Starpower","星力手环", "You can find it in the Magician's Cabin","你可以在魔法师小屋找到");
-        addItemAndTooltip(ItemRegistries.MANA_FLOWER, "Mana Flower","魔力花","When you need mana, automatically use the mana potion in your backpack","当你需要法力时，自动使用你背包的法力药水");
-        addItemAndTooltip(ItemRegistries.MAGNET_FLOWER, "Magnet Flower","奥术花","When you need mana, automatically use the mana potion in your backpack.Greatly increasing the pickup range for Stars","当你需要法力时，自动使用你背包的法力药水。大大增加星星的拾取范围");
-        addItemAndTooltip(ItemRegistries.MAGIC_CUFFS, "Magic Cuffs","魔法手铐","Restore 10 times the mana value of the damage received after injury","受伤后恢复受到伤害10倍的法力值");
-        addItemAndTooltip(ItemRegistries.SCULK_KATANA, "§3Sculk Katana","§3幽匿太刀","Swing this sword and launch a sonic boom","挥动这把剑来发射一道音爆");
-        addItemAndTooltip(ItemRegistries.SCULK_MEGAPHONE, "Sculk Megaphone","幽匿扩音器","Increases the range and damage of the Sonic Boom of the Sculk Katana","增加幽匿太刀音爆的距离和伤害");
-        addItemAndTooltip(ItemRegistries.ARCANE_FLOWER, "Arcane Flower","奥术花","When you need mana, automatically use the mana potion in your backpack","当你需要法力时，自动使用你背包的法力药水");
-        addItemAndTooltip(ItemRegistries.CELESTIAL_CUFFS, "Celestial Cuffs","天界手铐","Restore 10 times the mana value of the damage received after injury","受伤后恢复受到伤害10倍的法力值,增大魔力星星的拾取距离");
-        addItemAndTooltipAndJeiInfo(ItemRegistries.CELESTIAL_MAGNET, "Celestial Magnet","天界磁石","Increase the picking distance of mana stars","增大魔力星星的拾取距离", "You can find it in the Magician's Cabin","你可以在魔法师小屋找到");
-        addItemAndTooltip(ItemRegistries.THE_MIRROR_OF_DEATH_GAZE, "The Mirror Of Death Gaze","死亡凝视之镜","Staring into this mirror to return to the point of death","凝视这面镜子以返回死亡点");
-        addItemAndTooltips(ItemRegistries.ETHEREAI_LANTERN, "Ethereal Lantern","飘渺游灯",
+        addItem(XItemRegistry.MANA_REGENERATION_BAND, "Mana Regeneration Band","魔力再生手环");
+        addItem(XItemRegistry.ANCIENT_FOSSIL, "Ancient Fossil","远古化石");
+        addItemAndJeiInfo(XItemRegistry.BAND_OF_STARPOWER, "Band of Starpower","星力手环", "You can find it in the Magician's Cabin","你可以在魔法师小屋找到");
+        addItemAndJeiInfo(XItemRegistry.NATURE_GIFT, "Nature Gift","大自然的礼物","Destruction of cave vines has a chance of obtaining","破坏洞穴藤蔓有概率获得");
+        addItemAndTooltip(XItemRegistry.MANA_FLOWER, "Mana Flower","魔力花","When you need mana, automatically use the mana potion in your backpack","当你需要法力时，自动使用你背包的法力药水");
+        addItemAndTooltip(XItemRegistry.MAGIC_CUFFS, "Magic Cuffs","魔法手铐","Restore 10 times the mana value of the damage received after injury","受伤后恢复受到伤害10倍的法力值");
+        addItemAndTooltip(XItemRegistry.SCULK_MEGAPHONE, "Sculk Megaphone","幽匿扩音器","Increases the range and damage of the Sonic Boom of the Sculk Katana","增加幽匿太刀音爆的距离和伤害");
+        addItemAndTooltip(XItemRegistry.ARCANE_FLOWER, "Arcane Flower","奥术花","When you need mana, automatically use the mana potion in your backpack","当你需要法力时，自动使用你背包的法力药水");
+        addItemAndTooltip(XItemRegistry.CELESTIAL_CUFFS, "Celestial Cuffs","天界手铐","Restore 10 times the mana value of the damage received after injury","受伤后恢复受到伤害10倍的法力值,增大魔力星星的拾取距离");
+        addItemAndTooltipAndJeiInfo(XItemRegistry.CELESTIAL_MAGNET, "Celestial Magnet","天界磁石","Increase the picking distance of mana stars","增大魔力星星的拾取距离", "You can find it in the Magician's Cabin","你可以在魔法师小屋找到");
+        addItemAndTooltip(XItemRegistry.THE_MIRROR_OF_DEATH_GAZE, "The Mirror Of Death Gaze","死亡凝视之镜","Staring into this mirror to return to the point of death","凝视这面镜子以返回死亡点");
+        addItemAndTooltip(XItemRegistry.GATEWAY_GLASS, "Gate Glass","回溯魔镜","Shift and long press the right click to save the location, long press the right click to return to the location","潜行长按右键保存地点，长按右键返回地点");
+        addItemAndTooltips(XItemRegistry.MAGNET_FLOWER, "Magnet Flower","奥术花",
+                new String[]{
+                        "When you need mana, automatically use the mana potion in your backpack",
+                        "Greatly increasing the pickup range for Mana Stars"},
+                new String[]{
+                        "当你需要法力时，自动使用你背包的法力药水",
+                        "大大增加魔法星星的拾取范围"});
+
+        addItemAndTooltips(XItemRegistry.ARK_OF_THE_COSMOS, "Ark of the Cosmos","鸿蒙方舟",
+                new String[]{
+                        "Swing this sword to summon a magical comet from around and track enemies",
+                        "Right click to parry projectiles or entity",
+                        "If parrying is successful, you will receive 15 reinforced attacks and a brief invincibility",
+                        "Parry!"},
+                new String[]{
+                        "挥动这把剑以从四周召唤魔法彗星追踪敌人",
+                        "右键格挡弹射物或者生物",
+                        "若格挡成功，你将获得15次强化攻击和短暂的无敌",
+                        "格挡！"});
+
+        addItemAndTooltips(XItemRegistry.SCULK_KATANA, "§3Sculk Katana","§3幽匿太刀",
+                new String[]{
+                        "Swing this sword and launch a sonic boom",
+                        "Right click to stab the pointed enemy, if killed, no cooldown will be added"},
+                new String[]{
+                        "挥动这把剑来发射一道音爆",
+                        "右键刺向所指的敌人，若击杀则不添加冷却"});
+
+        addItemAndTooltips(XItemRegistry.ETHEREAI_LANTERN, "Ethereal Lantern","飘渺游灯",
                 new String[]{"Give it fuel, and it will light up the darkness for you with a torch when you put it on",
                         "Left click on the fuel button to consume it all, right click to consume it one by one"}
                 ,new String[]{"给予其燃料，它便会在你穿上他的时候用火把为你点亮黑暗",

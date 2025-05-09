@@ -2,7 +2,7 @@ package com.xiaofanwei.xfws_someitems.items.sword;
 
 
 import com.xiaofanwei.xfws_someitems.MoreAC;
-import com.xiaofanwei.xfws_someitems.registries.ItemRegistries;
+import com.xiaofanwei.xfws_someitems.registries.XItemRegistry;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.StreamCodec;
@@ -12,6 +12,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
 
+//武器挥动需要客户端向服务端发送
 public record MessageSwingArm() implements CustomPacketPayload {
 
     public static final Type<MessageSwingArm> TYPE = new Type<>(MoreAC.Resource("message_swing_arm"));
@@ -34,8 +35,11 @@ public record MessageSwingArm() implements CustomPacketPayload {
     public void handle(IPayloadContext context) {
         context.enqueueWork(() -> {
             if (context.player() instanceof ServerPlayer serverPlayer){
-                if ( serverPlayer.getMainHandItem().getItem() == ItemRegistries.SCULK_KATANA.get() && serverPlayer.swingTime == 0) {
+                if ( serverPlayer.getMainHandItem().getItem() == XItemRegistry.SCULK_KATANA.get() && serverPlayer.swingTime == 0) {
                     Sculk_Katana.onLeftClick(context.player(), 0.3*context.player().getAttributeValue(Attributes.ATTACK_DAMAGE));
+                }
+                if( serverPlayer.getMainHandItem().getItem() == XItemRegistry.ARK_OF_THE_COSMOS.get() && serverPlayer.swingTime == 0) {
+                    ArkOfTheCosmos.onLeftClick(context.player());
                 }
         }}).exceptionally(e -> {
             context.disconnect(Component.translatable("neoforge.network.invalid_flow", e.getMessage()));

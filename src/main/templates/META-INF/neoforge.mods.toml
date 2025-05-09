@@ -13,7 +13,7 @@ issueTrackerURL="https://github.com/xiaofanwei123/NeoForge-1.21" #optional
 
 # A list of mods - how many allowed here is determined by the individual mod loader
 [[mods]] #mandatory
-
+enumExtensions="META-INF/enumextensions.json"
 # The modid of the mod
 modId="xfws_someitems" #mandatory
 

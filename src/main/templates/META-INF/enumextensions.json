@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "enum": "net/minecraft/world/item/Rarity",
+      "name": "XFWS_SOMEITEMS_RAINBOW",
+      "constructor": "(ILjava/lang/String;Ljava/util/function/UnaryOperator;)V",
+      "parameters": {
+        "class": "com/xiaofanwei/xfws_someitems/registries/XRarity",
+        "field": "RAINBOW"
+      }
+    }
+  ]
+}

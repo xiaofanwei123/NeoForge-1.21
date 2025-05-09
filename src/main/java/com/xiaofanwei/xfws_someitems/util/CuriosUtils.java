@@ -20,9 +20,4 @@ public class CuriosUtils {
     public static boolean isPresence(LivingEntity living, Item Item){
         return CuriosApi.getCuriosHelper().findEquippedCurio(Item, living).isPresent();
     }
-
-//    public static boolean hasAccessoriesType(LivingEntity living, ValueType<Unit, UnitValue> type) {
-//        return living.getData(TCAttachments.ACCESSORIES).contains(type);
-//    }
-
 }

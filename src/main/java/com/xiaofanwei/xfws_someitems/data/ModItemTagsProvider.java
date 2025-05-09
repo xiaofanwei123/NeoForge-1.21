@@ -1,7 +1,7 @@
 package com.xiaofanwei.xfws_someitems.data;
 
 import com.xiaofanwei.xfws_someitems.MoreAC;
-import com.xiaofanwei.xfws_someitems.registries.ItemRegistries;
+import com.xiaofanwei.xfws_someitems.registries.XItemRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.IntrinsicHolderTagsProvider;
@@ -24,9 +24,11 @@ public class ModItemTagsProvider extends ItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         IntrinsicHolderTagsProvider.IntrinsicTagAppender<Item> accessory = this.tag(TCTags.ACCESSORY);
-        ItemRegistries.CURIOS.getEntries().forEach((item) -> {
+        XItemRegistry.COMMONCURIOS.getEntries().forEach((item) -> {
             accessory.add((Item)item.get());
         });
-        accessory.add(ItemRegistries.ETHEREAI_LANTERN.get());
+        XItemRegistry.CURIOS.getEntries().forEach((item) -> {
+            accessory.add((Item)item.get());
+        });
     }
 }
