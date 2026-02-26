@@ -19,7 +19,7 @@ public class XCreativeTabRegistry {
 
 
     static {
-        CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder()
+        CREATIVE_MODE_TABS.register("xfws_someitems", () -> CreativeModeTab.builder()
                 .title(Component.translatable("xfws_someitems.creativemodetab"))
                 .withTabsBefore(CreativeModeTabs.COMBAT)
                 .icon(() -> XItemRegistry.NATURE_GIFT.get().getDefaultInstance())

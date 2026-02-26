@@ -1,38 +1,28 @@
 package com.xiaofanwei.xfws_someitems.util;
 
-import com.xiaofanwei.xfws_someitems.MoreAC;
-import dev.kosmx.playerAnim.api.firstPerson.FirstPersonConfiguration;
-import dev.kosmx.playerAnim.api.firstPerson.FirstPersonMode;
-import dev.kosmx.playerAnim.api.layered.IAnimation;
-import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer;
-import dev.kosmx.playerAnim.api.layered.ModifierLayer;
-import dev.kosmx.playerAnim.api.layered.modifier.AbstractFadeModifier;
-import dev.kosmx.playerAnim.core.data.KeyframeAnimation;
-import dev.kosmx.playerAnim.core.util.Ease;
-import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationAccess;
-import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
-
-import io.redspace.ironsspellbooks.api.spells.SpellAnimations;
-import io.redspace.ironsspellbooks.setup.IronsAdjustmentModifier;
-import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.portal.DimensionTransition;
-import net.minecraft.world.phys.*;
-
-import static io.redspace.ironsspellbooks.config.ClientConfigs.SHOW_FIRST_PERSON_ARMS;
-import static io.redspace.ironsspellbooks.config.ClientConfigs.SHOW_FIRST_PERSON_ITEMS;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 
 public class XUtils {
 
@@ -97,7 +87,7 @@ public class XUtils {
         Vec3 at = hitresult.getLocation();
         AABB around = new AABB(at.add(-0.5F, -0.5F, -0.5F), at.add(0.5F, 0.5F, 0.5F)).inflate(15);
         for (LivingEntity entity1 : level.getEntitiesOfClass(LivingEntity.class, around.inflate(dist))) {
-            if ( !entity1.equals(entity) && !entity.isAlliedTo(entity1) && !entity1.isAlliedTo(entity) && entity1 instanceof Mob /*&& entity.hasLineOfSight(entity1)*/) {
+            if ( !entity1.equals(entity) && !entity.isAlliedTo(entity1) && !entity1.isAlliedTo(entity) && entity1 instanceof Mob) {
                 if (closestValid == null || entity1.distanceToSqr(at) < closestValid.distanceToSqr(at)) {
                     closestValid = entity1;
                 }
@@ -106,33 +96,30 @@ public class XUtils {
         return closestValid ;
     }
 
-    /**
-     * 播放动画
-     * */
-    public static void playAnimation(AbstractClientPlayer clientPlayer, String animationFileName) {
-        var rawanimation = PlayerAnimationRegistry.getAnimation(ResourceLocation.fromNamespaceAndPath(MoreAC.MODID, animationFileName));
-        if (rawanimation instanceof KeyframeAnimation keyframeAnimation) {
-            var playerAnimationData = (ModifierLayer<IAnimation>) PlayerAnimationAccess.getPlayerAssociatedData(clientPlayer).get(SpellAnimations.ANIMATION_RESOURCE);
-            if (playerAnimationData != null) {
-                var animation = new KeyframeAnimationPlayer(keyframeAnimation) {
-                    @Override
-                    public void tick() {
-                        if (getCurrentTick() == getStopTick() - 2) {
-                            IronsAdjustmentModifier.INSTANCE.fadeOut(3);
-                        }
-                        super.tick();
-                    }
-                };
-                var armsFlag = SHOW_FIRST_PERSON_ARMS.get();
-                var itemsFlag = SHOW_FIRST_PERSON_ITEMS.get();
-                if (armsFlag || itemsFlag) {
-                    animation.setFirstPersonMode(FirstPersonMode.THIRD_PERSON_MODEL);
-                    animation.setFirstPersonConfiguration(new FirstPersonConfiguration(armsFlag, armsFlag, itemsFlag, itemsFlag));
-                } else {
-                    animation.setFirstPersonMode(FirstPersonMode.DISABLED);
-                }
-                playerAnimationData.replaceAnimationWithFade(AbstractFadeModifier.standardFadeIn(2, Ease.INOUTSINE), animation, true);
-            }
+
+    //攻击速度和冷却的关系
+    public static int getAttackSpeed(LivingEntity living){
+        AttributeInstance attributeInstance = living.getAttribute(Attributes.ATTACK_SPEED);
+        if (attributeInstance != null){
+            double speed = attributeInstance.getValue();
+            int time = (int) (20 / speed) - 1;
+            return Math.max(0, time);
         }
+        return 0;
+    }
+
+    //弹射物伤害规则
+    public static boolean modifyDamage(Projectile projectile, Player player, LivingEntity target, float damageMultiplier){
+        ItemStack weaponItem = player.getWeaponItem();
+        Level level = player.level();
+        DamageSource damageSource = projectile.damageSources().playerAttack(player);
+        float damage = player.getAttribute(Attributes.ATTACK_DAMAGE) != null ? (float) (player.getAttributeValue(Attributes.ATTACK_DAMAGE)) : 1;
+        damage = EnchantmentHelper.modifyDamage((ServerLevel) level, weaponItem, target, damageSource, damage);
+
+        if (target.hurt(damageSource, damageMultiplier * damage)) {
+            EnchantmentHelper.doPostAttackEffectsWithItemSource((ServerLevel) level, target, damageSource, weaponItem);
+            return true;
+        }
+        return false;
     }
 }

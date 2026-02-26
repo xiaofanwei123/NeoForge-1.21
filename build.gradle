@@ -2,7 +2,7 @@
     id 'idea'
     id 'java-library'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.78'
+     id 'net.neoforged.moddev' version '2.0.140'
 }
 
 tasks.named('wrapper', Wrapper).configure {
@@ -113,7 +113,7 @@ dependencies {
 
     implementation "curse.maven:jei-238222:5846880"
 
-    implementation "curse.maven:irons-spells-n-spellbooks-855414:6359979"
+    implementation "curse.maven:irons-spells-n-spellbooks-855414:7605616"
 
     implementation "curse.maven:caelus-308989:5694215"
 

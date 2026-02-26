@@ -1,18 +1,12 @@
 package com.xiaofanwei.xfws_someitems.items;
 
 import com.xiaofanwei.xfws_someitems.util.XUtils;
-import io.redspace.ironsspellbooks.util.IMinecraftInstanceHelper;
 import io.redspace.ironsspellbooks.util.MinecraftInstanceHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundSetActionBarTextPacket;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;

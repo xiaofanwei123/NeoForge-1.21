@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-05T22:24:50.6832221	Item Models: xfws_someitems
+// 1.21.1	2025-06-29T23:49:40.2905487	Item Models: xfws_someitems
 42dac9eb2c8b7bb2bc4e19dbffd74d8460bf35a4 assets/xfws_someitems/models/item/ancient_fossil.json
 3519cc92d28f0b6ce476e5457285553c4dec11f1 assets/xfws_someitems/models/item/arcane_flower.json
 6e34abd2e40d4d0abe6281f8e304375f74c9871f assets/xfws_someitems/models/item/band_of_starpower.json
@@ -12,3 +12,4 @@ c6b86b216f712f09cfcbce4fc1a3aea7cc75dd7c assets/xfws_someitems/models/item/magne
 47aae29e5cb6b68fa76570d034860e4e375b284d assets/xfws_someitems/models/item/nature_gift.json
 52e7198e1a2819dadc2a4629a69166694406d90f assets/xfws_someitems/models/item/sculk_megaphone.json
 1c1bb84756b2070e422809e62c10a1ab065c83fa assets/xfws_someitems/models/item/the_mirror_of_death_gaze.json
+a163c9ce1e63e428f3fa804b66e491b455f18540 assets/xfws_someitems/models/item/watch.json

@@ -44,10 +44,11 @@ public class Language extends LanguageProvider {
         addItem(XItemRegistry.ANCIENT_FOSSIL, "Ancient Fossil","远古化石");
         addItemAndJeiInfo(XItemRegistry.BAND_OF_STARPOWER, "Band of Starpower","星力手环", "You can find it in the Magician's Cabin","你可以在魔法师小屋找到");
         addItemAndJeiInfo(XItemRegistry.NATURE_GIFT, "Nature Gift","大自然的礼物","Destruction of cave vines has a chance of obtaining","破坏洞穴藤蔓有概率获得");
+        addItemAndTooltip(XItemRegistry.STAR_WRATH,"Star Wrath","狂星之怒","Swing this sword to summon 3 comets from the sky from the position you specify","挥动这把剑以从你指定的位置从天上砸下3颗彗星");
         addItemAndTooltip(XItemRegistry.MANA_FLOWER, "Mana Flower","魔力花","When you need mana, automatically use the mana potion in your backpack","当你需要法力时，自动使用你背包的法力药水");
         addItemAndTooltip(XItemRegistry.MAGIC_CUFFS, "Magic Cuffs","魔法手铐","Restore 10 times the mana value of the damage received after injury","受伤后恢复受到伤害10倍的法力值");
         addItemAndTooltip(XItemRegistry.SCULK_MEGAPHONE, "Sculk Megaphone","幽匿扩音器","Increases the range and damage of the Sonic Boom of the Sculk Katana","增加幽匿太刀音爆的距离和伤害");
-        addItemAndTooltip(XItemRegistry.ARCANE_FLOWER, "Arcane Flower","奥术花","When you need mana, automatically use the mana potion in your backpack","当你需要法力时，自动使用你背包的法力药水");
+        addItemAndTooltip(XItemRegistry.ARCANE_FLOWER, "Arcane Flower","磁花","When you need mana, automatically use the mana potion in your backpack","当你需要法力时，自动使用你背包的法力药水");
         addItemAndTooltip(XItemRegistry.CELESTIAL_CUFFS, "Celestial Cuffs","天界手铐","Restore 10 times the mana value of the damage received after injury","受伤后恢复受到伤害10倍的法力值,增大魔力星星的拾取距离");
         addItemAndTooltipAndJeiInfo(XItemRegistry.CELESTIAL_MAGNET, "Celestial Magnet","天界磁石","Increase the picking distance of mana stars","增大魔力星星的拾取距离", "You can find it in the Magician's Cabin","你可以在魔法师小屋找到");
         addItemAndTooltip(XItemRegistry.THE_MIRROR_OF_DEATH_GAZE, "The Mirror Of Death Gaze","死亡凝视之镜","Staring into this mirror to return to the point of death","凝视这面镜子以返回死亡点");
@@ -59,6 +60,15 @@ public class Language extends LanguageProvider {
                 new String[]{
                         "当你需要法力时，自动使用你背包的法力药水",
                         "大大增加魔法星星的拾取范围"});
+
+        addItemAndTooltips(XItemRegistry.WATCH, "watch","表",
+                new String[]{
+                        "Reset the time you haven't slept",
+                        "I remember I just slept, didn't I?"},
+                new String[]{
+                        "重置你未睡觉的时间",
+                        "\"我记得我刚睡过觉,不是吗?\""});
+
 
         addItemAndTooltips(XItemRegistry.ARK_OF_THE_COSMOS, "Ark of the Cosmos","鸿蒙方舟",
                 new String[]{

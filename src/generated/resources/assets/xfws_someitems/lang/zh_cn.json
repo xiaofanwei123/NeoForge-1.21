@@ -1,8 +1,8 @@
-{
+  {
   "attribute.xfws_someitems.manastar_distance": "魔力星星拾取距离",
   "effect.xfws_someitems.mana_sickness": "魔力病",
   "item.xfws_someitems.ancient_fossil": "远古化石",
-  "item.xfws_someitems.arcane_flower": "奥术花",
+  "item.xfws_someitems.arcane_flower": "磁花",
   "item.xfws_someitems.ark_of_the_cosmos": "鸿蒙方舟",
   "item.xfws_someitems.band_of_starpower": "星力手环",
   "item.xfws_someitems.celestial_cuffs": "天界手铐",
@@ -16,7 +16,9 @@
   "item.xfws_someitems.nature_gift": "大自然的礼物",
   "item.xfws_someitems.sculk_katana": "§3幽匿太刀",
   "item.xfws_someitems.sculk_megaphone": "幽匿扩音器",
+  "item.xfws_someitems.star_wrath": "狂星之怒",
   "item.xfws_someitems.the_mirror_of_death_gaze": "死亡凝视之镜",
+  "item.xfws_someitems.watch": "表",
   "jei.tooltip.item.xfws_someitems.band_of_starpower": "你可以在魔法师小屋找到",
   "jei.tooltip.item.xfws_someitems.celestial_magnet": "你可以在魔法师小屋找到",
   "jei.tooltip.item.xfws_someitems.nature_gift": "破坏洞穴藤蔓有概率获得",
@@ -48,6 +50,9 @@
   "tooltip.item.xfws_someitems.sculk_katana.0": "挥动这把剑来发射一道音爆",
   "tooltip.item.xfws_someitems.sculk_katana.1": "右键刺向所指的敌人，若击杀则不添加冷却",
   "tooltip.item.xfws_someitems.sculk_megaphone": "增加幽匿太刀音爆的距离和伤害",
+  "tooltip.item.xfws_someitems.star_wrath": "挥动这把剑以从你指定的位置从天上砸下3颗彗星",
   "tooltip.item.xfws_someitems.the_mirror_of_death_gaze": "凝视这面镜子以返回死亡点",
+  "tooltip.item.xfws_someitems.watch.0": "重置你未睡觉的时间",
+  "tooltip.item.xfws_someitems.watch.1": "\"我记得我刚睡过觉,不是吗?\"",
   "xfws_someitems.creativemodetab": "小烦维的物品"
 }

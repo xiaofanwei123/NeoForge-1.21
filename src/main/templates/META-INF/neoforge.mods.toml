@@ -11,6 +11,8 @@ license="MIT"
 # A URL to refer people to when problems occur with this mod
 issueTrackerURL="https://github.com/xiaofanwei123/NeoForge-1.21" #optional
 
+#[[mixins]]
+#config = "${mod_id}.mixins.json"
 # A list of mods - how many allowed here is determined by the individual mod loader
 [[mods]] #mandatory
 enumExtensions="META-INF/enumextensions.json"
@@ -18,7 +20,7 @@ enumExtensions="META-INF/enumextensions.json"
 modId="xfws_someitems" #mandatory
 
 # The version number of the mod
-version="0.0.1" #mandatory
+version="0.0.2" #mandatory
 
 # A display name for the mod
 displayName="xfws_someitems" #mandatory
@@ -63,7 +65,7 @@ description='Hello'
     # Optional field describing why the dependency is required or why it is incompatible
     # reason="..."
     # The version range of the dependency
-    versionRange="0.0.1" #mandatory
+    versionRange="0.0.2" #mandatory
     # An ordering relationship for the dependency.
     # BEFORE - This mod is loaded BEFORE the dependency
     # AFTER - This mod is loaded AFTER the dependency

@@ -26,8 +26,8 @@ public class DataComponents {
     public static final Supplier<DataComponentType<Integer>> COUNT = register("count",
             builder -> builder.persistent(ExtraCodecs.POSITIVE_INT).networkSynchronized(ByteBufCodecs.VAR_INT));
 
-    public static final Supplier<DataComponentType<Integer>> COOLDOWN = register("cooldown",
-            builder -> builder.persistent(ExtraCodecs.POSITIVE_INT).networkSynchronized(ByteBufCodecs.INT));
+    public static final Supplier<DataComponentType<Float>> COOLDOWN = register("cooldown",
+            builder -> builder.persistent(ExtraCodecs.POSITIVE_FLOAT).networkSynchronized(ByteBufCodecs.FLOAT));
 
 
     private static <T>DeferredHolder<DataComponentType<?>,DataComponentType<T>> register(String name, UnaryOperator<DataComponentType.Builder<T>> builder) {

@@ -1,5 +1,6 @@
 package com.xiaofanwei.xfws_someitems.items;
 
+import com.xiaofanwei.xfws_someitems.XServerConfigs;
 import com.xiaofanwei.xfws_someitems.items.curios.CurioItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -52,7 +53,11 @@ public class EtherealLantern extends CurioItem {
     }
 
     public int getRange() {
-        return 8;
+        return XServerConfigs.maximumDistance;
+    }
+
+    public int getLightLevel() {
+        return XServerConfigs.brightness;
     }
 
     public void curioTick(SlotContext ctx, ItemStack stack) {
@@ -91,7 +96,7 @@ public class EtherealLantern extends CurioItem {
 
     private boolean tryPlace(ItemStack stack, Player player, BlockPos pos) {
         Level level = player.level();
-        if (level.getBrightness(LightLayer.BLOCK, pos) > 4) return false;
+        if (level.getBrightness(LightLayer.BLOCK, pos) > getLightLevel()) return false;
 
         BlockState state = level.getBlockState(pos);
         if (invalidPlacement(level, pos, state)) return false;

@@ -3,18 +3,18 @@ package com.xiaofanwei.xfws_someitems.registries;
 import com.xiaofanwei.xfws_someitems.items.EtherealLantern;
 import com.xiaofanwei.xfws_someitems.items.GatewayGlass;
 import com.xiaofanwei.xfws_someitems.items.TheMirrorOfDeathGaze;
+import com.xiaofanwei.xfws_someitems.items.Watch;
 import com.xiaofanwei.xfws_someitems.items.curios.CurioItem;
 import com.xiaofanwei.xfws_someitems.items.sword.ArkOfTheCosmos;
-import com.xiaofanwei.xfws_someitems.items.sword.Sculk_Katana;
+import com.xiaofanwei.xfws_someitems.items.sword.SculkKatana;
+import com.xiaofanwei.xfws_someitems.items.sword.StarWrath;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.SimpleTier;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -29,7 +29,7 @@ import static net.minecraft.world.entity.ai.attributes.AttributeModifier.Operati
 
 public class XItemRegistry {
     //COMMONItem为数据生成时会自动生成单一model.json
-    //Item为数据生成时不会自动生成单一model.json
+    //Items为数据生成时不会自动生成单一model.json
     //COMMONCURIOS为数据生成时会自动生成单一model.json和accessory的tag
     //CURIOS为数据生成时不会自动生成单一model.json但会生成accessory的tag
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems("xfws_someitems");
@@ -37,9 +37,13 @@ public class XItemRegistry {
     public static final DeferredRegister.Items CURIOS = DeferredRegister.createItems("xfws_someitems");
     public static final DeferredRegister.Items COMMONCURIOS = DeferredRegister.createItems("xfws_someitems");
 
+    public static final DeferredItem<Item> WATCH;
+
     public static final DeferredItem<SwordItem> SCULK_KATANA;
     //public static final DeferredItem<SwordItem> BALEFUL_HARVESTER_SCYTHE;
     public static final DeferredItem<SwordItem> ARK_OF_THE_COSMOS;
+    //Star Wrath
+    public static final DeferredItem<SwordItem> STAR_WRATH;
 
     public static final DeferredItem<Item> THE_MIRROR_OF_DEATH_GAZE;
     public static final DeferredItem<Item> GATEWAY_GLASS;
@@ -69,10 +73,31 @@ public class XItemRegistry {
     }
 
     static{
-        SCULK_KATANA = ITEMS.register("sculk_katana", ()-> new Sculk_Katana(
-                new SimpleTier(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 2000, -4f, -1f, 10, () -> Ingredient.of(Items.ECHO_SHARD)), 10,1.6f));
+        SCULK_KATANA = ITEMS.register("sculk_katana", () ->
+                new SculkKatana(
+                        getSimpleTier(()->Items.ECHO_SHARD),
+                        10,
+                        1.6f
+                )
+        );
 
-        ARK_OF_THE_COSMOS = ITEMS.register("ark_of_the_cosmos", ()-> new ArkOfTheCosmos(new SimpleTier(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 7, -4f, -1f, 30, () -> Ingredient.of(ItemRegistry.MITHRIL_INGOT.get())), 10,1.6f));
+        ARK_OF_THE_COSMOS = ITEMS.register("ark_of_the_cosmos", () ->
+                new ArkOfTheCosmos(
+                        getSimpleTier(ItemRegistry.MITHRIL_INGOT),
+                        10,
+                        1.6f
+                )
+        );
+
+        STAR_WRATH = ITEMS.register("star_wrath", () ->
+                new StarWrath(
+                        getSimpleTier(ItemRegistry.DIVINE_SOULSHARD),
+                        10,
+                        1.6f
+                )
+        );
+
+        WATCH = COMMONITEMS.register("watch", Watch::new);
 
         //BALEFUL_HARVESTER_SCYTHE = ITEMS.register("baleful_harvester_scythe", ()-> new BalefulHarvesterScythe());
 
@@ -139,8 +164,17 @@ public class XItemRegistry {
                 .addAttributeModifier(XAttributeRegistry.MANASTAR_DISTANCE, 20, ADD_VALUE)
                 .addTooltip()
                 , new Item.Properties().rarity(Rarity.EPIC));
+    }
 
-
+    public static SimpleTier getSimpleTier(Supplier<Item> repairIngredientSupplier) {
+        return new SimpleTier(
+                BlockTags.INCORRECT_FOR_NETHERITE_TOOL,
+                7,
+                -4f,
+                -1f,
+                30,
+                () -> Ingredient.of(repairIngredientSupplier.get())
+        );
     }
 
     public static Supplier<CurioItem> registerCurio(String name, Consumer<CurioItem.Builder> consumer, Item.Properties properties) {

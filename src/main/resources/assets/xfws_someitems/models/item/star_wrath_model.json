@@ -1,0 +1,35 @@
+{
+	"format_version": "1.21.6",
+	"credit": "Made with Blockbench",
+	"parent": "minecraft:item/handheld",
+	"textures": {
+		"layer0": "xfws_someitems:item/star_wrath_model"
+	},
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [0, 90, 45],
+			"translation": [0, 10, 2.25],
+			"scale": [1.5, 1.5, 1]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [0, -90, -45],
+			"translation": [0, 10, 2.25],
+			"scale": [1.5, 1.5, 1]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 90, 40],
+			"translation": [1, 7, 0.5],
+			"scale": [1.5, 1.5, 1]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, -90, -40],
+			"translation": [1, 7, 0],
+			"scale": [1.5, 1.5, 1]
+		},
+		"ground": {
+			"rotation": [0, 0, 45],
+			"translation": [0, 10.25, 0],
+			"scale": [1.5, 1.5, 1]
+		}
+	}
+}

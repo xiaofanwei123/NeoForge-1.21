@@ -94,12 +94,6 @@ public class ManaStar extends Entity {
         this.getEntityData().set(MAX_DISTANCE,  (float)maxDistance);
     }
 
-//    public int getStage() {
-//        int stages = 5;
-//        return Mth.clamp(getMana() <= 1 ? 1 : (int) Math.ceil(Math.min((getMana() / (getMaxMana() / Math.max(1, stages - 1))) + 1, stages)), 1, stages);
-//    }
-
-
     @Override
     protected void readAdditionalSaveData(CompoundTag tag) {
         setMana(tag.getFloat("mana"));

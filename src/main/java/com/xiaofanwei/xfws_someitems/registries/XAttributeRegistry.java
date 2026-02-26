@@ -1,11 +1,14 @@
 package com.xiaofanwei.xfws_someitems.registries;
 
+import io.redspace.ironsspellbooks.damage.DamageSources;
+import io.redspace.ironsspellbooks.damage.ISSDamageTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.RangedAttribute;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.CommandEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -19,7 +22,6 @@ public class XAttributeRegistry {
     static {
         MANASTAR_DISTANCE = ATTRIBUTES.register("manastar_distance", () -> (new RangedAttribute("attribute.xfws_someitems.manastar_distance", 5, 0,25 )).setSyncable(true));
     }
-
     public static void register(IEventBus eventBus) {
         ATTRIBUTES.register(eventBus);
     }

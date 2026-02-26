@@ -16,7 +16,9 @@
   "item.xfws_someitems.nature_gift": "Nature Gift",
   "item.xfws_someitems.sculk_katana": "§3Sculk Katana",
   "item.xfws_someitems.sculk_megaphone": "Sculk Megaphone",
+  "item.xfws_someitems.star_wrath": "Star Wrath",
   "item.xfws_someitems.the_mirror_of_death_gaze": "The Mirror Of Death Gaze",
+  "item.xfws_someitems.watch": "watch",
   "jei.tooltip.item.xfws_someitems.band_of_starpower": "You can find it in the Magician's Cabin",
   "jei.tooltip.item.xfws_someitems.celestial_magnet": "You can find it in the Magician's Cabin",
   "jei.tooltip.item.xfws_someitems.nature_gift": "Destruction of cave vines has a chance of obtaining",
@@ -48,6 +50,9 @@
   "tooltip.item.xfws_someitems.sculk_katana.0": "Swing this sword and launch a sonic boom",
   "tooltip.item.xfws_someitems.sculk_katana.1": "Right click to stab the pointed enemy, if killed, no cooldown will be added",
   "tooltip.item.xfws_someitems.sculk_megaphone": "Increases the range and damage of the Sonic Boom of the Sculk Katana",
+  "tooltip.item.xfws_someitems.star_wrath": "Swing this sword to summon 3 comets from the sky from the position you specify",
   "tooltip.item.xfws_someitems.the_mirror_of_death_gaze": "Staring into this mirror to return to the point of death",
+  "tooltip.item.xfws_someitems.watch.0": "Reset the time you haven't slept",
+  "tooltip.item.xfws_someitems.watch.1": "I remember I just slept, didn't I?",
   "xfws_someitems.creativemodetab": "xfw's some items"
 }

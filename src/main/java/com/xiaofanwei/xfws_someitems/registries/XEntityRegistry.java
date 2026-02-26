@@ -9,15 +9,18 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.function.Supplier;
+
 public class XEntityRegistry {
     private static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Registries.ENTITY_TYPE,MoreAC.MODID );
 
-    public static final DeferredHolder<EntityType<?>, EntityType<ManaStar>> MANA_STAR = ENTITIES.register("mana_star", () ->
+    public static final Supplier<EntityType<ManaStar>> MANA_STAR = ENTITIES.register("mana_star", () ->
             EntityType.Builder.of(ManaStar::new, MobCategory.MISC)
                     .sized(0.3F, 0.3F)
                     .fireImmune()
                     .build("mana_star")
     );
+
 
     public static void register(IEventBus eventBus) {
         ENTITIES.register(eventBus);

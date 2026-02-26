@@ -2,8 +2,8 @@ package com.xiaofanwei.xfws_someitems.registries;
 
 import com.xiaofanwei.xfws_someitems.MoreAC;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
+import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
@@ -18,17 +18,19 @@ public class XSoundEvents {
     public XSoundEvents() {
     }
 
-    private static Supplier<SoundEvent> register(String id) {
-        return SOUNDS.register(id, () -> {
-            return SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(MoreAC.MODID, id));
-        });
+    private static Supplier<SoundEvent> registerSound(String id) {
+        return SOUNDS.register(id, () -> SoundEvent.createVariableRangeEvent(MoreAC.Resource( id)));
     }
 
     static {
         SOUNDS = DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, MoreAC.MODID);
-        SCISSOR_GUILLOTINE_SNAP = register("scissor_guillotine_snap");
-        CRYSTAL_IMPACT= register("crystal_impact");
-        RAZORBLADE_TYPHOON= register("razorblade_typhoon");
-        JINGLE_BELLS= register("jingle_bells");
+        SCISSOR_GUILLOTINE_SNAP = registerSound("scissor_guillotine_snap");
+        CRYSTAL_IMPACT= registerSound("crystal_impact");
+        RAZORBLADE_TYPHOON= registerSound("razorblade_typhoon");
+        JINGLE_BELLS= registerSound("jingle_bells");
+    }
+
+    public static void register(IEventBus eventBus) {
+        SOUNDS.register(eventBus);
     }
 }

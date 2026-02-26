@@ -1,8 +1,9 @@
-package com.xiaofanwei.xfws_someitems.entity;
+package com.xiaofanwei.xfws_someitems.entity.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.xiaofanwei.xfws_someitems.MoreAC;
+import com.xiaofanwei.xfws_someitems.entity.ManaStar;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -66,6 +67,6 @@ public class ManaStarRenderer extends EntityRenderer<ManaStar> {
 
     @Override
     public ResourceLocation getTextureLocation(ManaStar entity) {
-        return ResourceLocation.fromNamespaceAndPath(MoreAC.MODID, "textures/entity/mana_star.png");
+        return MoreAC.Resource("textures/entity/mana_star.png");
     }
 }

@@ -9,7 +9,7 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 
-// 这里的值应该与 META-INF/neoforge.mods.toml 文件中的条目匹配
+//这里的值应该与 META-INF/neoforge.mods.toml 文件中的条目匹配
 @Mod(MoreAC.MODID)
 public class MoreAC
 {
@@ -19,15 +19,15 @@ public class MoreAC
     public MoreAC(IEventBus modEventBus, ModContainer modContainer)
     {
         XParticleRegistry.register(modEventBus);
-        BlockRegistry.register(modEventBus);
         XItemRegistry.register(modEventBus);
         XCreativeTabRegistry.register(modEventBus);
         XMobEffectRegistry.register(modEventBus);
         XAttributeRegistry.register(modEventBus);
         XEntityRegistry.register(modEventBus);
         DataComponents.register(modEventBus);
-        XSoundEvents.SOUNDS.register(modEventBus);
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        XSoundEvents.register(modEventBus);
+        modContainer.registerConfig(ModConfig.Type.SERVER, XServerConfigs.SPEC, String.format("%s-server.toml", MODID));
+
     }
 
     public static ResourceLocation Resource(String path) {
